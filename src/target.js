@@ -32,7 +32,7 @@ const collect = (connect, monitor) => {
 // }))
 
 
-@DropTarget('dot', dotTarget, collect)
+@DropTarget(props => props.accepts, dotTarget, collect)
 export default class Target extends Component {
   constructor(props) {
     super(props);

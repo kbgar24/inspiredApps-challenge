@@ -46,7 +46,7 @@ const collection = (connect, monitor) => ({
 //   didDrop: monitor.didDrop()
 // }))
 
-@DragSource('dot', dotSource, collection)
+@DragSource(props => props.type, dotSource, collection)
 export default class Dot extends Component {
   constructor() {
     super();
