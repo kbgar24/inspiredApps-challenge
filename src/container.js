@@ -146,11 +146,22 @@ export default class Container extends Component {
     return (
       <div style={style}>
         MainContainer
+        
         {this.renderTarget('redStart', 'red')}
         {this.renderTarget('redStop', 'red')}
-        {this.renderTarget('blackStart', 'black')}
-        {this.renderTarget('blackStop', 'black')}
+        
+        {this.renderTarget('blackStart1', 'black')}
+        {this.renderTarget('blackStop1', 'black')}
+        
+        {this.renderTarget('blackStart2', 'black')}
+        {this.renderTarget('blackStop2', 'black')}
+        
+        {this.renderTarget('greenStart', 'green')}
+        {this.renderTarget('greenStop', 'green')}
         {/* {this.renderTarget('blue')} */}
+
+        {this.renderTarget('blueStart', 'blue')}
+        {this.renderTarget('blueStop', 'blue')}
       </div>
     )
   }

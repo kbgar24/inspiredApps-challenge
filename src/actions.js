@@ -10,10 +10,22 @@ let dotPositions = {
     type: 'red',
     position: 'redStart',
   }, 
-  blackDot: {
+  greenDot: {
+    type: 'green',
+    position: 'greenStart',
+  }, 
+  blueDot: {
+    type: 'blue',
+    position: 'blueStart',
+  },
+  blackDot1: {
     type: 'black',
-    position: 'blackStart',
-  }
+    position: 'blackStart1',
+  },
+  blackDot2: {
+    type: 'black',
+    position: 'blackStart2',
+  },
 }
 
 // let dotPositions = { ...startPositions };
