@@ -28,8 +28,15 @@ export default class Target extends Component {
     super();
   }
 
-  render = () => (
-    <div style={style}>
-    </div>
-  );
+  render () {
+
+    const { canDrop, isOver, connectDropTarget } = this.props;
+    return connectDropTarget(
+      <div style={style}>
+        { canDrop && console.log('candrop!') }
+        { isOver && console.log('isOver!') }
+        { this.props.children }
+      </div>
+    )
+  }
 };

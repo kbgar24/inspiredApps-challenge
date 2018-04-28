@@ -23,8 +23,8 @@ export default class Container extends Component {
         
       ],
       targets: [
-        { accepts: [ItemTypes.RED] },
-        { accepts: [ItemTypes.BLACK] },
+        { accepts: ItemTypes.RED },
+        { accepts: ItemTypes.BLACK },
       ]
     }
   }
