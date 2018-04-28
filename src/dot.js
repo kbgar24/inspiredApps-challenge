@@ -15,10 +15,12 @@ const style = {
 
 const dotSource = {
   beginDrag(props) {
-    // const { name, type } = props;
+
+    const { name, type } = props;
     console.log('drag begin!: ', props);
     return {
-      dotId: 1
+      name,
+      type, 
     }
   },
   // endDrag(props, monitor, component){

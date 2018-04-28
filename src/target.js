@@ -13,9 +13,11 @@ const style = {
 
 const dotTarget = {
   drop(props, monitor) {
-    // moveDot(props.name);
+    const targetName = props.name;
+    const dotName = monitor.getItem().name;
+    moveDot(dotName, targetName);
     console.log('dot dropped!: ', props);
-    console.log(props.onDrop(monitor.getItem()));
+    console.log(monitor.getItem());
   },
 };
 
