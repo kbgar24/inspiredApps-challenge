@@ -29,6 +29,25 @@ export default class Container extends Component {
     }
   }
 
+  handleDrop(index, item) {
+    console.log('item dropped!: ', index, item);
+    // const { name } = item;
+    // const droppedBoxNames = name ? { $push: [name] } : {};
+
+    // this.setState(
+    //   update(this.state, {
+    //     dustbins: {
+    //       [index]: {
+    //         lastDroppedItem: {
+    //           $set: item,
+    //         }
+    //       }
+    //     },
+    //     droppedBoxNames,
+    //   })
+    // )
+  }
+
   render = () => (
     <div style={ style }>
       Main Container
@@ -41,7 +60,17 @@ export default class Container extends Component {
           />
         ))
       }
-      <Target name='redTarget'/>
+      {
+        this.state.targets.map(({ accepts }, index) => {
+          return (
+            <Target 
+              accepts={accepts}
+              onDrop={ item => this.handleDrop(index, item)}
+              key={index}
+            />
+          )
+        })
+      }
     </div>
   );
 };

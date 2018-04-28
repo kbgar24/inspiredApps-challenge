@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { DropTarget } from 'react-dnd';
+import Dot from './dot';
 
 const style = {
   border: '1px solid black',
@@ -12,10 +13,11 @@ const style = {
 const dotTarget = {
   drop(props, monitor) {
     console.log('dot dropped!: ', props);
+    props.onDrop(monitor.getItem());
   },
 };
 
-@DropTarget('dot', dotTarget, (connect, monitor) => ({
+@DropTarget(props => props.accepts, dotTarget, (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
   isOver: monitor.isOver(),
   canDrop: monitor.canDrop(),
