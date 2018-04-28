@@ -19,10 +19,10 @@ const dotSource = {
   }
 }
 
-@DragSource(props => props.type, dotSource, (connect, monitor) => {
+@DragSource('dot', dotSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
   isDragging: monitor.isDragging(),
-});
+}))
 
 export default class Dot extends Component {
   constructor() {
