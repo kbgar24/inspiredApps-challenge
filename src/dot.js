@@ -7,48 +7,56 @@ const style = {
   height: '25px',
   width: '25px',
   backgroundColor: 'red',
-  marginTop: '50px',
+  // marginTop: '50px',
+  zIndex: 100,
+  position: 'relative',
+  margin: '5px',
 };
 
 const dotSource = {
   beginDrag(props) {
-    const { name, type } = props;
+    // const { name, type } = props;
     console.log('drag begin!: ', props);
     return {
-      name, 
-      type
+      dotId: 1
     }
   },
-  endDrag(props, monitor, component){
-    if (!monitor.didDrop()){
-      console.log('did not drop!')
-      return;
-    }
-    const item = monitor.getItem();
-    const dropResult = monitor.getDropResult();
+  // endDrag(props, monitor, component){
+  //   if (!monitor.didDrop()){
+  //     console.log('did not drop!')
+  //     return;
+  //   }
+  //   const item = monitor.getItem();
+  //   const dropResult = monitor.getDropResult();
 
-    console.log('dropped!: ', item, dropResult);
-  }
+  //   console.log('dropped!: ', item, dropResult);
+  // }
 }
 
-@DragSource('dot', dotSource, (connect, monitor) => ({
+const collection = (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
   isDragging: monitor.isDragging(),
-  didDrop = monitor.didDrop();
-}))
+});
 
+// @DragSource('dot', dotSource, (connect, monitor) => ({
+//   connectDragSource: connect.dragSource(),
+//   isDragging: monitor.isDragging(),
+//   didDrop: monitor.didDrop()
+// }))
+
+@DragSource('dot', dotSource, collection)
 export default class Dot extends Component {
   constructor() {
     super();
   }
 
   render() {
-    const { connectDragSource, type:backgroundColor, didDrop } = this.props;
-
-    didDrop && alert('dropped!');
+    // const { connectDragSource, type:backgroundColor, didDrop } = this.props;
+    const { connectDragSource } = this.props;
+    // didDrop && alert('dropped!');
 
     return connectDragSource(
-      <div style={{ ...style, backgroundColor }}>
+      <div style={{ ...style, backgroundColor: 'red' }}>
       </div>
     );
     
