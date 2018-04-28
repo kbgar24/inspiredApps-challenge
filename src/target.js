@@ -13,11 +13,12 @@ const style = {
 
 const dotTarget = {
   drop(props, monitor) {
-    const targetName = props.name;
+    const { name: targetName, handleDrop } = props;
     const dotName = monitor.getItem().name;
     moveDot(dotName, targetName);
     console.log('dot dropped!: ', props);
     console.log(monitor.getItem());
+    // handleDrop();
   },
   canDrop(props, monitor){
     return !props.children
@@ -25,7 +26,10 @@ const dotTarget = {
 };
 
 const collect = (connect, monitor) => {
-  return { connectDropTarget: connect.dropTarget()}
+  return { 
+    connectDropTarget: connect.dropTarget(),
+    canDrop: monitor.canDrop(),
+  }
 }
 
 // @DropTarget(props => {console.log('props: ', props); return props.accepts;}, dotTarget, (connect, monitor) => ({
@@ -43,9 +47,10 @@ export default class Target extends Component {
 
   render () {
 
-    const { connectDropTarget } = this.props;
+    const { connectDropTarget, canDrop } = this.props;
     return connectDropTarget(
       <div style={style}>
+        {/* { !canDrop && alert('Cannot drop there!') } */}
         {/* { canDrop && console.log('candrop!') } */}
         {/* { isOver && console.log('isOver!') } */}
         { this.props.children }

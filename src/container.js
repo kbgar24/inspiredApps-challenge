@@ -15,8 +15,8 @@ const style = {
 export default class Container extends Component {
   constructor(props) {
     super(props);
-  }
-  //   this.state = {
+    this.state = {
+      solved: false,
   //     dots: [
   //       { name: 'RED_DOT', type: ItemTypes.RED, start: 'redDotStart' },
   //       { name: 'BLACK_DOT_1', type: ItemTypes.BLACK, start: 'blackDotStart' }
@@ -29,13 +29,33 @@ export default class Container extends Component {
   //       { accepts: ItemTypes.BLACK, name: 'blackDotStart' },
   //     ],
   //     droppedDotNames: [];
-  //   }
-  // }
+    }
+  }
 
+  // componentDidUpdate(){
+  //   console.log('componentDidUpdate: ', this.props);
+  //   !this.state.solved && this.checkFinished();
+  // }
   // isDropped = (dotName) => this.state.droppedDotNames.includes(dotName);
 
-  handleDrop(index, item) {
-    console.log('item dropped!: ', index, item);
+  componentWillReceiveProps(nextProps) {
+    this.checkFinished(nextProps);
+  }
+
+  checkFinished = (nextProps) => {
+    let count = 0;
+    const { dotPositions } = nextProps;
+    for (let dot in dotPositions){
+      const { position } = dotPositions[dot];
+      position.includes('Stop') && count++;
+    }
+    console.log('count: ', count);
+    this.setState({ solved: count === 5 });
+  }
+
+  handleDrop = () => {
+    // console.log('item dropped!: ', index, item);
+    this.checkFinished();
     // const { name } = item;
     // const droppedBoxNames = name ? { $push: [name] } : {};
 
@@ -79,7 +99,7 @@ export default class Container extends Component {
     //   dot = <Dot name:/>
     // }
     return (
-      <Target name={targetName} accepts={accepts}>
+      <Target name={targetName} accepts={accepts} handleDrop={ this.handleDrop }>
         {dot}
       </Target>
     )
@@ -146,7 +166,8 @@ export default class Container extends Component {
     return (
       <div style={style}>
         MainContainer
-        
+        { this.state.solved && alert('Task Complete :)') }
+
         {this.renderTarget('redStart', 'red')}
         {this.renderTarget('redStop', 'red')}
         

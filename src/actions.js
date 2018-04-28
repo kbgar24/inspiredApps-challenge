@@ -43,6 +43,8 @@ export function moveDot(dotName, targetName) {
   observer(dotPositions);
 };
 
+
+
 // export function moveDot(target) {
 //   console.log('moveDot called to: ', target);
 //   dotPosition = target;
