@@ -9,6 +9,6 @@ import { observe } from './actions';
 //   </div>
 // );
 
-observe((dotPosition) => {
-  ReactDOM.render(<Main dotPosition={ dotPosition } />, document.getElementById('app'));
+observe((dotPositions) => {
+  ReactDOM.render(<Main dotPositions={ dotPositions } />, document.getElementById('app'));
 });

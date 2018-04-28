@@ -7,10 +7,10 @@ const style = {
   height: '25px',
   width: '25px',
   backgroundColor: 'red',
-  // marginTop: '50px',
   zIndex: 100,
   position: 'relative',
   margin: '5px',
+  cursor: 'pointer'
 };
 
 const dotSource = {
@@ -52,11 +52,11 @@ export default class Dot extends Component {
 
   render() {
     // const { connectDragSource, type:backgroundColor, didDrop } = this.props;
-    const { connectDragSource } = this.props;
+    const { connectDragSource, type } = this.props;
     // didDrop && alert('dropped!');
 
     return connectDragSource(
-      <div style={{ ...style, backgroundColor: 'red' }}>
+      <div style={{ ...style, backgroundColor: type }}>
       </div>
     );
     

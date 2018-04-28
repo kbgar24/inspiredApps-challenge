@@ -66,14 +66,20 @@ export default class Container extends Component {
   //     }
   //   }
 
-
-  renderTarget = (name) => {
+  renderTarget = (targetName, accepts) => {
     let dot = null;
-    if (this.props.dotPosition === name){
-      dot = <Dot />
+    const { dotPositions } = this.props;
+    for (let dotName in dotPositions){
+      const { position, type } = dotPositions[dotName];
+      if (position === targetName){
+        dot = <Dot name={dotName} type={type} />
+      }
     }
+    // if (this.props.dotPositions === targetName){
+    //   dot = <Dot name:/>
+    // }
     return (
-      <Target name={name}>
+      <Target name={targetName} accepts={accepts}>
         {dot}
       </Target>
     )
@@ -140,8 +146,10 @@ export default class Container extends Component {
     return (
       <div style={style}>
         MainContainer
-        {this.renderTarget('start')}
-        {this.renderTarget('stop')}
+        {this.renderTarget('redStart', 'red')}
+        {this.renderTarget('redStop', 'red')}
+        {this.renderTarget('blackStart', 'black')}
+        {this.renderTarget('blackStop', 'black')}
         {/* {this.renderTarget('blue')} */}
       </div>
     )
