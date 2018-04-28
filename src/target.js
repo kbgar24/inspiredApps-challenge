@@ -19,6 +19,9 @@ const dotTarget = {
     console.log('dot dropped!: ', props);
     console.log(monitor.getItem());
   },
+  canDrop(props, monitor){
+    return !props.children
+  },
 };
 
 const collect = (connect, monitor) => {
