@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Container from './container';
 
 export default class Main extends Component {
   constructor() {
@@ -7,7 +8,7 @@ export default class Main extends Component {
 
   render = () => (
     <div>
-      <h1>Main Page!</h1>
+      <Container />
     </div>
   );
 };

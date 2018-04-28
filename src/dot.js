@@ -5,6 +5,7 @@ const style = {
   height: '25px',
   width: '25px',
   backgroundColor: 'red',
+  marginTop: '50px',
 };
 
 export default class Dot extends Component {

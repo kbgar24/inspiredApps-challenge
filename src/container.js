@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Dot from './dot';
+import Target from './target';
 
 const style = {
   width: '500px',
@@ -16,6 +17,7 @@ export default class Container extends Component {
     <div style={ style }>
       Main Container
       <Dot />
+      <Target />
     </div>
   );
 };
