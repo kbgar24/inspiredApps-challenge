@@ -30,9 +30,9 @@ export default class Dot extends Component {
   }
 
   render() {
-    const { connectDragSource } = this.props;
+    const { connectDragSource, type:backgroundColor } = this.props;
     return connectDragSource(
-      <div style={style}>
+      <div style={{ ...style, backgroundColor }}>
       </div>
     );
     
