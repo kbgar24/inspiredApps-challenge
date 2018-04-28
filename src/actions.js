@@ -1,19 +1,12 @@
-// const startPositions = {
-//   red: 'redDotStart',
-//   black: 'blackDotStart',
-// }
-
-// let dotPosition = 'start'
-
-let dotPositions = {
+const startPositions = {
   redDot: {
     type: 'red',
     position: 'redStart',
-  }, 
+  },
   greenDot: {
     type: 'green',
     position: 'greenStart',
-  }, 
+  },
   blueDot: {
     type: 'blue',
     position: 'blueStart',
@@ -28,13 +21,17 @@ let dotPositions = {
   },
 }
 
+// Deep Clone; 
+let dotPositions = JSON.parse(JSON.stringify(startPositions));
+
 // let dotPositions = { ...startPositions };
 
 let observer = null;
 
-// export function resetDots() {
-//   dotPositions = { ...startPositions };
-// }
+export function resetDots() {
+  dotPositions = JSON.parse(JSON.stringify(startPositions));
+  observer(dotPositions);
+}
 
 export function observe(o) {
   observer = o;
