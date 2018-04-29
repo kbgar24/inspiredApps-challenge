@@ -4,7 +4,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import Dot from './dot';
 import Target from './target';
 import ItemTypes from './itemTypes';
-
+import { resetDots } from './actions';
 
 const style = {
   width: '500px',
@@ -50,11 +50,10 @@ export default class Container extends Component {
       const { position } = dotPositions[dot];
       position.includes('Stop') && count++;
     }
-    // console.log('count: ', count);
-    count === 5 && console.log('solved!');
     
-    count === 5 && setTimeout( () => { this.setState({ solved: true }) }, 100);
-    // this.setState({ solved: count === 5 });
+    count === 5 
+    ? setTimeout( () => { this.setState({ solved: true }) }, 100)
+    : this.state.solved && this.setState({ solved: false })
   }
 
   handleDrop = () => {
@@ -166,9 +165,15 @@ export default class Container extends Component {
   //   </div>
   // );
 
+  handleReset = () => {
+    this.setState({solved: false});
+    resetDots();
+  }
+
   render() {
     return (
       <div style={style}>
+        <button onClick={ this.handleReset }>Reset</button>
         MainContainer
         { this.state.solved && alert('Task Complete :)') }
   
