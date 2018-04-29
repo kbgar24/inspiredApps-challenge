@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Container from './container';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import CanvasSolution from './canvasSolution';
 
 
 export default class Main extends Component {
@@ -25,6 +26,7 @@ export default class Main extends Component {
         </TabPanel>
         <TabPanel>
           <h2>Other Content</h2>
+          <CanvasSolution />
         </TabPanel>
       </Tabs>
     </div>
