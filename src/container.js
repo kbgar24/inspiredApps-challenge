@@ -39,9 +39,9 @@ export default class Container extends Component {
   // }
   // isDropped = (dotName) => this.state.droppedDotNames.includes(dotName);
 
-  componentWillReceiveProps(nextProps) {
-    this.checkFinished(nextProps);
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   this.checkFinished(nextProps);
+  // }
 
   checkFinished = (nextProps) => {
     let count = 0;
@@ -50,13 +50,16 @@ export default class Container extends Component {
       const { position } = dotPositions[dot];
       position.includes('Stop') && count++;
     }
-    console.log('count: ', count);
-    this.setState({ solved: count === 5 });
+    // console.log('count: ', count);
+    count === 5 && console.log('solved!');
+    
+    count === 5 && setTimeout( () => { this.setState({ solved: true }) }, 100);
+    // this.setState({ solved: count === 5 });
   }
 
   handleDrop = () => {
     // console.log('item dropped!: ', index, item);
-    this.checkFinished();
+    this.checkFinished(this.props);
     // const { name } = item;
     // const droppedBoxNames = name ? { $push: [name] } : {};
 

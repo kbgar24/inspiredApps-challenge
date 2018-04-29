@@ -18,6 +18,7 @@ const dotTarget = {
     moveDot(dotName, targetName);
     console.log('dot dropped!: ', props);
     console.log(monitor.getItem());
+    handleDrop();
   },
   canDrop(props, monitor){
     return !props.children

@@ -52,13 +52,9 @@ export default class Dot extends Component {
   }
 
   render() {
-    // const { connectDragSource, type:backgroundColor, didDrop } = this.props;
     const { connectDragSource, type } = this.props;
-    // didDrop && alert('dropped!');
 
     return connectDragSource(
-      // <div style={{ ...style }}>
-      // </div>
       <img src={`/assets/ia-logo-dot-${type}.png`} style={{ ...style  }}/>
     );
     
