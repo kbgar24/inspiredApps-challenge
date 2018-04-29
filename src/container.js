@@ -188,7 +188,7 @@ export default class Container extends Component {
 
         { this.state.solved && alert('Task Complete :)') }
   
-        <div style={{ height: '80px', width: '500px' }}>
+        <div style={{ height: '80px', width: '380px', margin: '0px auto' }}>
           {this.renderTarget('redStart', 'red')}
           {this.renderTarget('blackStart1', 'black')}
           {this.renderTarget('blackStart2', 'black')}
