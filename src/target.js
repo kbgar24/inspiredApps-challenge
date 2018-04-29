@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { DropTarget } from 'react-dnd';
 import { moveDot } from './actions';
 
-const style = {
-  border: '1px solid black',
-  borderRadius: '50%',
-  height: '35px',
-  width: '35px',
-  marginTop: '50px',
-  display: 'inline-block',
-};
+// const style = {
+//   border: '1px solid black',
+//   borderRadius: '50%',
+//   height: '35px',
+//   width: '35px',
+//   marginTop: '50px',
+//   display: 'inline-block',
+// };
 
 const dotTarget = {
   drop(props, monitor) {
@@ -39,9 +39,9 @@ export default class Target extends Component {
 
   render () {
 
-    const { connectDropTarget, canDrop } = this.props;
+    const { connectDropTarget, canDrop, name } = this.props;
     return connectDropTarget(
-      <div style={style}>
+      <div className={name}>
         { this.props.children }
       </div>
     )

@@ -4,12 +4,11 @@ import { DragSource } from 'react-dnd';
 
 const style = {
   borderRadius: '50%',
-  height: '25px',
-  width: '25px',
-  backgroundColor: 'red',
+  height: '55px',
+  width: '55px',
   zIndex: 100,
   position: 'relative',
-  margin: '5px',
+  margin: '10px',
   cursor: 'pointer'
 };
 

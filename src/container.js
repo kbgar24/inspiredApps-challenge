@@ -5,6 +5,7 @@ import Dot from './dot';
 import Target from './target';
 import ItemTypes from './itemTypes';
 
+
 const style = {
   width: '500px',
   height: '500px',
@@ -99,7 +100,7 @@ export default class Container extends Component {
     //   dot = <Dot name:/>
     // }
     return (
-      <Target name={targetName} accepts={accepts} handleDrop={ this.handleDrop }>
+      <Target className={targetName} name={targetName} accepts={accepts} handleDrop={ this.handleDrop }>
         {dot}
       </Target>
     )
@@ -177,11 +178,24 @@ export default class Container extends Component {
           {this.renderTarget('blueStart', 'blue')}
         </div>
   
-        {this.renderTarget('redStop', 'red')}
-        {this.renderTarget('blackStop1', 'black')}
-        {this.renderTarget('blackStop2', 'black')}
-        {this.renderTarget('greenStop', 'green')}
-        {this.renderTarget('blueStop', 'blue')}
+
+        <div style={{ 
+          backgroundImage: 'url("/assets/ia-logo-back.png")',
+          height: '350px',
+          width: '350px',
+          backgroundSize: 'cover',
+          position: 'relative',
+        }}>
+          {this.renderTarget('redStop', 'red')}
+          {this.renderTarget('blackStop1', 'black')}
+          {this.renderTarget('blackStop2', 'black')}
+          {this.renderTarget('greenStop', 'green')}
+          {this.renderTarget('blueStop', 'blue')}
+        </div>
+        {/* <div>
+          <img src='/assets/ia-logo-back.png'/>
+
+        </div> */}
       </div>
     )
   }
