@@ -10,6 +10,7 @@ const style = {
   width: '500px',
   height: '500px',
   border: '1px solid black',
+  backgroundColor: 'white',
 };
 
 @DragDropContext(HTML5Backend)
@@ -187,7 +188,7 @@ export default class Container extends Component {
 
         { this.state.solved && alert('Task Complete :)') }
   
-        <div>
+        <div style={{ height: '80px', width: '500px' }}>
           {this.renderTarget('redStart', 'red')}
           {this.renderTarget('blackStart1', 'black')}
           {this.renderTarget('blackStart2', 'black')}
