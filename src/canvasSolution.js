@@ -4,6 +4,8 @@ const style = {
   border: '1px solid black'
 }
 
+let currentDots;
+
 // const emptyLogo = <img src='/assets/ia-logo-back.png' />;
 
 export default class Main extends Component {
@@ -13,12 +15,17 @@ export default class Main extends Component {
   }
 
   componentDidMount(){
+    this.createCanvas();
+  }
+
+  componentDidUpdate(){
     this.updateCanvas();
   }
 
-  updateCanvas(){
+  createCanvas(){
     const { canvas, emptyLogo, redDot, blackDot, greenDot, blueDot } = this.refs;
     const ctx = this.refs.canvas.getContext('2d');
+
     const initialDots = [
       {
         x: 75,
@@ -65,26 +72,113 @@ export default class Main extends Component {
       },
     ];
 
-    console.log('canvas: ', this.refs.canvas);
-    // ctx.fillRect(0,0,100,100);
+    dotPositions = initialDots;
+    // this.setState({ dotPositions: initialDots })
+
+    
     ctx.drawImage(emptyLogo, 75, 100, 350, 350);
-    initialDots.forEach(({src, x, y, w, h}) => { 
+    initialDots.forEach(({ src, x, y, w, h }) => {
       console.log('newDot!: ', src, x, y, w, h)
       ctx.drawImage(src, x, y, w, h);
-     })
+    })
+  }
+  
+  updateCanvas(){
+    const { canvas, emptyLogo, redDot, blackDot, greenDot, blueDot } = this.refs;
+    const ctx = this.refs.canvas.getContext('2d');
+    const canvasBounds = canvas.getBoundingClientRect();
+    const offsetX = canvasBounds.left;
+    const offsetY = canvasBounds.top;
+    let canDrag = true;
+    let mouseX;
+    let mouseY;
+    
+    // console.log('initialdots: ', initialDots);
+    const dotPositions = this.state.dotPositions;
+    console.log('canvas: ', this.refs.canvas);
+    // ctx.fillRect(0,0,100,100);
+  
+
+     const mouseWithinDot = (dot) => (
+       mouseX > dot.x
+         && mouseX < dot.x + dot.width
+         && mouseY > dot.y
+         && mouseY < dot.y + dot.height
+     )
+
+     let startX;
+     let startY;
 
     const mouseDown = (e) => { 
       console.log('mouse down') 
       e.preventDefault();
       e.stopPropagation();
-      const canvasX = parseInt(e.clientX);
-      const canvasY = parseInt(e.clientY);
-      console.log('canvasX: ', canvasX);
-      console.log('canvasY: ', canvasY);
-      
+      const mouseX = parseInt(e.clientX) - offsetX;
+      const mouseY = parseInt(e.clientY) - offsetY;
+      canDrag = false;
+
+      for (let dot of dotPositions){
+        if (mouseWithinDot(dot)){
+          canDrag = true;
+          dot.isDragging = true;
+        }
+      }
+
+      startX = mouseX;
+      startY = mouseY;
+
     } 
-    const mouseUp = () => { console.log('mouse up') }
-    const mouseMove = () => { console.log('mouse move') }
+    const mouseUp = (e) => { 
+      e.preventDefault();
+      e.stopPropagation();
+      canDrag = false;
+      // console.log('dotPositionsin mU: ', dotPositions);
+      for (let dot of dotPositions) {
+        console.log('dot in mU: ', dot);
+        dot.isDragging = false;
+      }
+     }
+
+    const mouseMove = (e) => {  
+      if (canDrag){
+        e.preventDefault();
+        e.stopPropagation();
+
+        const mouseX = parseInt(e.clientX) - offsetX;
+        const mouseY = parseInt(e.clientY) - offsetY;
+
+        const dX = mouseX - startX;
+        const dY = mouseY - startY;
+        
+        for (let dot of dotPositions) {
+          if (dot.isDragging) {
+            dot.x += dX;
+            dot.y += dY;
+          }
+        }
+
+        draw();
+
+        startX = mouseX;
+        startY = mouseY;
+
+      }
+    }
+
+  
+
+    const clearCanvas = () => {
+      ctx.clearRect(0,0, canvas.width, canvas.height)
+    }
+
+    const draw = () => {
+      clearCanvas();
+      dotPositions.forEach(({ src, x, y, w, h }) => {
+        ctx.drawImage(src, x, y, w, h);
+      })
+    }
+
+    
     canvas.onmousedown = mouseDown;
     canvas.onmouseup = mouseUp
     canvas.onmousemove = mouseMove
