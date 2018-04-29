@@ -52,11 +52,13 @@ export default class Dot extends Component {
   }
 
   render() {
-    const { connectDragSource, type } = this.props;
+    const { connectDragSource, isDragging, type } = this.props;
 
-    return connectDragSource(
-      <img src={`/assets/ia-logo-dot-${type}.png`} style={{ ...style  }}/>
+    const connectedDot = connectDragSource(
+      <img src={`/assets/ia-logo-dot-${type}.png`} style={{ ...style }} />
     );
+
+    return isDragging ? null : connectedDot;
     
   }
 };
