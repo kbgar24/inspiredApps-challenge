@@ -42,7 +42,7 @@ export default class Target extends Component {
 
     const { connectDropTarget, canDrop, name } = this.props;
     return connectDropTarget(
-      <div className={name}>
+      <div className={name} style={{ display: 'inline-block' }}>
         { this.props.children }
       </div>
     )

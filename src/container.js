@@ -101,8 +101,18 @@ export default class Container extends Component {
     // if (this.props.dotPositions === targetName){
     //   dot = <Dot name:/>
     // }
+    const isStart = targetName.includes('Start');
+    console.log('targetName isStart: ', isStart, targetName);
+    // const display = isStart ? 'inline-block' : 'block' ;
+
     return (
-      <Target className={targetName} name={targetName} accepts={accepts} handleDrop={ this.handleDrop }>
+      <Target 
+        className={targetName}
+        name={targetName} 
+        accepts={accepts} 
+        handleDrop={ this.handleDrop }
+        // display={ display }
+      >
         {dot}
       </Target>
     )
@@ -174,11 +184,10 @@ export default class Container extends Component {
     return (
       <div style={style}>
         <button onClick={ this.handleReset }>Reset</button>
-        MainContainer
+
         { this.state.solved && alert('Task Complete :)') }
   
         <div>
-          Start Positions
           {this.renderTarget('redStart', 'red')}
           {this.renderTarget('blackStart1', 'black')}
           {this.renderTarget('blackStart2', 'black')}
