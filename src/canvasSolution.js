@@ -9,6 +9,7 @@ const style = {
 export default class Main extends Component {
   constructor(props) {
     super(props);
+    this.state = {}
   }
 
   componentDidMount(){
@@ -18,14 +19,64 @@ export default class Main extends Component {
   updateCanvas(){
     const ctx = this.refs.canvas.getContext('2d');
     const { emptyLogo, redDot, blackDot, greenDot, blueDot } = this.refs;
+    const initialDots = [
+      {
+        x: 75,
+        y: 25,
+        w: 55,
+        h: 55,
+        src: redDot,
+        type: 'red',
+        isDragging: false,
+      },
+      {
+        x: 150,
+        y: 25,
+        w: 55,
+        h: 55,
+        src: blackDot,
+        type: 'black',
+        isDragging: false,
+      },
+      {
+        x: 220,
+        y: 25,
+        w: 55,
+        h: 55,
+        src: blackDot,
+        type: 'black',
+        isDragging: false,
+      }, {
+        x: 290,
+        y: 25,
+        w: 55,
+        h: 55,
+        src: greenDot,
+        type: 'green',
+        isDragging: false,
+      }, {
+        x: 365,
+        y: 25,
+        w: 55,
+        h: 55,
+        src: blueDot,
+        type: 'blue',
+        isDragging: false,
+      },
+    ];
+
     console.log('canvas: ', this.refs.canvas);
     // ctx.fillRect(0,0,100,100);
     ctx.drawImage(emptyLogo, 75, 100, 350, 350);
-    ctx.drawImage(redDot, 75, 25, 55, 55);
-    ctx.drawImage(blackDot, 150, 25, 55, 55);
-    ctx.drawImage(blackDot, 220, 25, 55, 55);
-    ctx.drawImage(greenDot, 290, 25, 55, 55);
-    ctx.drawImage(blueDot, 365, 25, 55, 55);
+    initialDots.forEach(({src, x, y, w, h}) => { 
+      console.log('newDot!: ', src, x, y, w, h)
+      ctx.drawImage(src, x, y, w, h);
+     })
+    // ctx.drawImage(redDot, 75, 25, 55, 55);
+    // ctx.drawImage(blackDot, 150, 25, 55, 55);
+    // ctx.drawImage(blackDot, 220, 25, 55, 55);
+    // ctx.drawImage(greenDot, 290, 25, 55, 55);
+    // ctx.drawImage(blueDot, 365, 25, 55, 55);
     
     
   }
