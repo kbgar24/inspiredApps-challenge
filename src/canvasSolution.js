@@ -17,8 +17,8 @@ export default class Main extends Component {
   }
 
   updateCanvas(){
+    const { canvas, emptyLogo, redDot, blackDot, greenDot, blueDot } = this.refs;
     const ctx = this.refs.canvas.getContext('2d');
-    const { emptyLogo, redDot, blackDot, greenDot, blueDot } = this.refs;
     const initialDots = [
       {
         x: 75,
@@ -72,6 +72,23 @@ export default class Main extends Component {
       console.log('newDot!: ', src, x, y, w, h)
       ctx.drawImage(src, x, y, w, h);
      })
+
+    const mouseDown = (e) => { 
+      console.log('mouse down') 
+      e.preventDefault();
+      e.stopPropagation();
+      const canvasX = parseInt(e.clientX);
+      const canvasY = parseInt(e.clientY);
+      console.log('canvasX: ', canvasX);
+      console.log('canvasY: ', canvasY);
+      
+    } 
+    const mouseUp = () => { console.log('mouse up') }
+    const mouseMove = () => { console.log('mouse move') }
+    canvas.onmousedown = mouseDown;
+    canvas.onmouseup = mouseUp
+    canvas.onmousemove = mouseMove
+     
     // ctx.drawImage(redDot, 75, 25, 55, 55);
     // ctx.drawImage(blackDot, 150, 25, 55, 55);
     // ctx.drawImage(blackDot, 220, 25, 55, 55);
