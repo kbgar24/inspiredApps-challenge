@@ -17,13 +17,16 @@ export default class Main extends Component {
 
   updateCanvas(){
     const ctx = this.refs.canvas.getContext('2d');
-    const { emptyLogo, redDot, blackDot, greenDot } = this.refs;
+    const { emptyLogo, redDot, blackDot, greenDot, blueDot } = this.refs;
     console.log('canvas: ', this.refs.canvas);
     // ctx.fillRect(0,0,100,100);
-    ctx.drawImage(emptyLogo, 10, 100, 350, 350);
-    ctx.drawImage(redDot, 5, 5, 55, 55);
-    ctx.drawImage(blackDot, 10, 5, 55, 55);
-    ctx.drawImage(greenDot, 5, 5, 55, 55);
+    ctx.drawImage(emptyLogo, 75, 100, 350, 350);
+    ctx.drawImage(redDot, 75, 25, 55, 55);
+    ctx.drawImage(blackDot, 150, 25, 55, 55);
+    ctx.drawImage(blackDot, 220, 25, 55, 55);
+    ctx.drawImage(greenDot, 290, 25, 55, 55);
+    ctx.drawImage(blueDot, 365, 25, 55, 55);
+    
     
   }
 
@@ -35,6 +38,7 @@ export default class Main extends Component {
         <img ref="redDot" src="/assets/ia-logo-dot-red.png" />
         <img ref="blackDot" src="/assets/ia-logo-dot-black.png" />
         <img ref="greenDot" src="/assets/ia-logo-dot-green.png" />
+        <img ref="blueDot" src="/assets/ia-logo-dot-blue.png" />
       </div>
     </div>
   )

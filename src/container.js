@@ -183,12 +183,14 @@ export default class Container extends Component {
 
   render() {
     return (
-      <div style={style}>
+      <div>
         <button onClick={ this.handleReset }>Reset</button>
+
+      <div style={style}>
 
         { this.state.solved && alert('Task Complete :)') }
   
-        <div style={{ height: '80px', width: '380px', margin: '0px auto' }}>
+        <div style={{ height: '80px', width: '380px', margin: '15px auto' }}>
           {this.renderTarget('redStart', 'red')}
           {this.renderTarget('blackStart1', 'black')}
           {this.renderTarget('blackStart2', 'black')}
@@ -203,6 +205,7 @@ export default class Container extends Component {
           width: '350px',
           backgroundSize: 'cover',
           position: 'relative',
+          margin: '10px auto',
         }}>
           {this.renderTarget('redStop', 'red')}
           {this.renderTarget('blackStop1', 'black')}
@@ -215,6 +218,7 @@ export default class Container extends Component {
 
         </div> */}
       </div>
+          </div>
     )
   }
 };
