@@ -167,21 +167,20 @@ export default class Container extends Component {
       <div style={style}>
         MainContainer
         { this.state.solved && alert('Task Complete :)') }
-
-        {this.renderTarget('redStart', 'red')}
+  
+        <div>
+          Start Positions
+          {this.renderTarget('redStart', 'red')}
+          {this.renderTarget('blackStart1', 'black')}
+          {this.renderTarget('blackStart2', 'black')}
+          {this.renderTarget('greenStart', 'green')}
+          {this.renderTarget('blueStart', 'blue')}
+        </div>
+  
         {this.renderTarget('redStop', 'red')}
-        
-        {this.renderTarget('blackStart1', 'black')}
         {this.renderTarget('blackStop1', 'black')}
-        
-        {this.renderTarget('blackStart2', 'black')}
         {this.renderTarget('blackStop2', 'black')}
-        
-        {this.renderTarget('greenStart', 'green')}
         {this.renderTarget('greenStop', 'green')}
-        {/* {this.renderTarget('blue')} */}
-
-        {this.renderTarget('blueStart', 'blue')}
         {this.renderTarget('blueStop', 'blue')}
       </div>
     )

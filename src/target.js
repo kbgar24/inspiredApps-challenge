@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { DropTarget } from 'react-dnd';
-import Dot from './dot';
 import { moveDot } from './actions';
 
 const style = {
@@ -9,6 +8,7 @@ const style = {
   height: '35px',
   width: '35px',
   marginTop: '50px',
+  display: 'inline-block',
 };
 
 const dotTarget = {
@@ -18,7 +18,6 @@ const dotTarget = {
     moveDot(dotName, targetName);
     console.log('dot dropped!: ', props);
     console.log(monitor.getItem());
-    // handleDrop();
   },
   canDrop(props, monitor){
     return !props.children
@@ -32,13 +31,6 @@ const collect = (connect, monitor) => {
   }
 }
 
-// @DropTarget(props => {console.log('props: ', props); return props.accepts;}, dotTarget, (connect, monitor) => ({
-//   connectDropTarget: connect.dropTarget(),
-//   isOver: monitor.isOver(),
-//   // canDrop: monitor.canDrop(),
-// }))
-
-
 @DropTarget(props => props.accepts, dotTarget, collect)
 export default class Target extends Component {
   constructor(props) {
@@ -50,9 +42,6 @@ export default class Target extends Component {
     const { connectDropTarget, canDrop } = this.props;
     return connectDropTarget(
       <div style={style}>
-        {/* { !canDrop && alert('Cannot drop there!') } */}
-        {/* { canDrop && console.log('candrop!') } */}
-        {/* { isOver && console.log('isOver!') } */}
         { this.props.children }
       </div>
     )
