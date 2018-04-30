@@ -131,30 +131,12 @@
           // && mouseX < (dot.x + dot.width)
           // && mouseY > dot.y
           // && mouseY < (dot.y + dot.height)
-          console.log('mouseX: ', mouseX)
-          console.log('mouseY: ', mouseY);
-          
-          if (mouseX > dot.x){
-            console.log('x1in')
-          }
-          
-          if (mouseX < dot.x + dot.w) {
-            console.log('x2in')
-          }
-
-          if (mouseY > dot.y){
-            console.log('y1in')
-          }
-          
-          if (mouseY < dot.y + dot.h){
-            console.log('y2in')
-          }
-
+          // console.log('mouseX: ', mouseX)
+          // console.log('mouseY: ', mouseY);
+      
           if (mouseX > dot.x && mouseX < dot.x + dot.w && mouseY > dot.y && mouseY < dot.y + dot.h) {
-            console.log('in!')
             return true;
           }
-          console.log('out!')
           return false;
         }
 
@@ -186,15 +168,14 @@
           startY = mouseY;
 
         }
-        window.dotPositions = dotPositions;
         // Dot x, y + 28 each locatin
         
         const isDotInCircle = (midPoint, dotX, dotY) => {
           console.log('=============');
-          const distanceSquared = Math.pow((dotX - midPoint.x), 2) + Math.pow((dotY - midPoint.y), 2)
-          console.log('dSquared: ', distanceSquared)
+          const distanceSquared = Math.pow((dotX - midPoint.x + 30), 2) + Math.pow((dotY - midPoint.y + 30), 2)
+          // console.log('dSquared: ', distanceSquared)
           const distance = Math.sqrt(distanceSquared);
-          console.log('distance: ', distance);
+          // console.log('distance: ', distance);
           if (37.5 > (distance + 27.5)) {
             console.log('*****match!!!*****')
             return true;
@@ -204,13 +185,13 @@
         }
         
         const returnDotToStart = (dot) => {
-          console.log('dot in rDTS', dot);
+          // console.log('dot in rDTS', dot);
           const initial = initialDots().find((initial) => initial.name === dot.name );
-          console.log('initial: ', initial.x, initial.y);
+          // console.log('initial: ', initial.x, initial.y);
           dot.x = initial.x;
           dot.y = initial.y;
           draw();
-          console.log('lol')
+          // console.log('lol')
         }
 
   
@@ -225,7 +206,8 @@
               x: 128, 
               y: 235
             }, 
-            type: 'black'
+            type: 'black',
+            occupied: false,
           }, 
           black2: {
             dotLocation: {
@@ -236,7 +218,8 @@
               x: 346,
               y: 293,
             }, 
-            type: 'black'
+            type: 'black',
+            occupied: false,
           },
           red: {
             dotLocation: {
@@ -247,7 +230,8 @@
               x: 366,
               y: 166,
             },
-            type: 'red'
+            type: 'red',
+            occupied: false,
           },
           blue: {
             dotLocation: {
@@ -258,7 +242,8 @@
               x: 260,
               y: 150,
             },
-            type: 'blue'
+            type: 'blue',
+            occupied: false,
           },
           green: {
             dotLocation: {
@@ -269,31 +254,42 @@
               x: 183,
               y: 318,
             },
-            type: 'green'
+            type: 'green',
+            occupied: false,
           }
         }
 
 
       const handleDotOnTarget = () => {
-        console.log('solutionLocations: ', solutionLocations)  
-        for (let dot of dotPositions) {
+        // console.log('solutionLocations: ', solutionLocations)  
+        dotPositions.forEach((dot, i) => { 
             dot.isDragging = false;
             for (let solution in solutionLocations) {
               const target = solutionLocations[solution];
-              // console.log('target: ', target);
-              // console.log('dot: ', dot);
-              console.log('isDotInCircle: ', isDotInCircle(target.midPoint, dot.x, dot.y))
-              if (dot.type === target.type && isDotInCircle(target.midPoint, dot.x, dot.y)) {
-                dot.x = target.dotLocation.x;
-                dot.y = target.dotLocation.y;
-                dot.notDraggable = true;
-                console.log('match!: ', dot, target)
-              } else {
-                returnDotToStart(dot);
+              if (isDotInCircle(target.midPoint, dot.x, dot.y)){
+                console.log('dotInCircle!');
+                console.log('dot.type: ', dot.type);
+                console.log('target.type: ', target.type);
+                
               }
+              // console.log('isDotInCircle: ', isDotInCircle(target.midPoint, dot.x, dot.y))
+              if (!target.occupied && dot.type === target.type && isDotInCircle(target.midPoint, dot.x, dot.y)) {
+                console.log('match!: ', dot, target)
+                console.log('dot before: ', dot.x, dot.y)
+                // dot.x = target.dotLocation.x;
+                // dot.y = target.dotLocation.y;
+                dotPositions[i].x = target.dotLocation.x;
+                dotPositions[i].y = target.dotLocation.y;
+                dotPositions[i].notDraggable = true;
+                dotPositions[i].isComplete = true;
+                target.occupied = true;
+                
+                console.log('dot after: ', dot.x, dot.y)
+              } 
             }
-          }
-        }
+            !dotPositions[i].isComplete && returnDotToStart(dot);
+        })
+      }
 
         const solutionCircle = {
 
@@ -334,16 +330,19 @@
           dotPositions.forEach(({ src, x, y, w, h }) => {
             ctx.drawImage(src, x, y, w, h);
           })
-          console.log('redrawn');
+          // console.log('redrawn');
         }
 
         const mouseUp = (e) => {
             e.preventDefault();
             e.stopPropagation();
             canDrag = false;
+            console.log('location on up: ', { 'x': mouseX, 'y': mouseY});
+            // console.log('mouseX: ', mouseY);
+            
             // console.log('dotPositionsin mU: ', dotPositions);
             handleDotOnTarget()
-            console.log('dotPositions: ', dotPositions)
+            // console.log('dotPositions: ', dotPositions)
           }
 
 
