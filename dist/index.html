@@ -112,7 +112,7 @@
   <script src="/bundle.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <!-- <div id="app"></div>
   <div>
@@ -436,7 +436,7 @@
           const count = Object.keys(solutionLocations).reduce((tv, cv) => {
             return solutionLocations[cv].occupied ? ++tv : tv;
           },0);
-          count === 5 && alert('Task successfully complete!');
+          count === 5 && swal("Good Job!", "You have successfully fixed the InspiredApps logo!", "success");
         }
 
         const mouseMove = (e) => {

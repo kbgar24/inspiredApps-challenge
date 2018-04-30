@@ -5,6 +5,7 @@ import Dot from './dot';
 import Target from './target';
 import ItemTypes from './itemTypes';
 import { resetDots } from './actions';
+import swal from 'sweetalert';
 
 const style = {
   width: '500px',
@@ -182,13 +183,16 @@ export default class Container extends Component {
   }
 
   render() {
+
+    this.state.solved && swal("Good Job!", "You have successfully fixed the InspiredApps logo!", "success")
+  
     return (
       <div>
         <button onClick={ this.handleReset } className="challenge-btn">Reset</button>
 
       <div style={style}>
 
-        { this.state.solved && alert('Task Complete :)') }
+      
   
         <div style={{ height: '80px', width: '380px', margin: '15px auto' }}>
           {this.renderTarget('redStart', 'red')}
