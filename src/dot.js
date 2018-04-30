@@ -29,8 +29,8 @@ const collection = (connect, monitor) => ({
 
 @DragSource(props => props.type, dotSource, collection)
 export default class Dot extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -39,7 +39,6 @@ export default class Dot extends Component {
     const connectedDot = connectDragSource(
       <img src={`/assets/img/ia-logo-dot-${type}.png`} style={{ ...style }} />
     );
-
     return isDragging ? null : connectedDot;
     
   }
