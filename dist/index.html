@@ -3,576 +3,78 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Page Title</title>
+  <title>JS Challenge</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/ia-logo-complete.png" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="screen" href="/assets/styles/styles.css" />
-  <style>
-  body {
-  padding : 10px ;
-  
-}
-
-#exTab1 .tab-content {
-  color : white;
-  background-color: #428bca;
-  padding : 5px 15px;
-}
-
-#exTab2 h3 {
-  color : white;
-  background-color: #428bca;
-  padding : 5px 15px;
-}
-
-/* remove border radius for the tab */
-
-#exTab1 .nav-pills > li > a {
-  border-radius: 0;
-}
-
-/* change border radius for the tab , apply corners on top*/
-
-#exTab3 .nav-pills > li > a {
-  border-radius: 4px 4px 0 0 ;
-}
-
-#exTab3 .tab-content {
-  color : white;
-  background-color: #428bca;
-  padding : 5px 15px;
-}
-
-
-
-
-
-
-  </style>
 </head>
 
 <body>
-      
-
-
-<div class="container">
-  <div class="challenge-topBar">
-    <img src="/assets/logo-white.png" />
-    <p class="challenge-title">JavaScript Challenge</p>
-  </div>
-  <div class="challenge-overview">
-    <p>The InspiringApps logo has lost its dots! </p>
-    <p>Use either of the <strong>ReactDnD</strong> or <strong>HTML5 Canvas</strong> tools below to help restore the dots to the logo!</p>
-  </div>
-</div>
-
-
-<div id="exTab2" class="container challenge-container">
-  <ul class="nav nav-tabs">
-    <i id="challenge-info" class="fa fa-info-circle challenge-info" aria-hidden="true"></i>
-      <i id="challenge-help" class="fa fa-question-circle challenge-help" aria-hidden="true">
-      </i>
-    
-    <li class="active">
-      <a href="#1" data-toggle="tab" class="tab-title">React DnD</a>
-    </li>
-    <li>
-      <a href="#2" data-toggle="tab" class="tab-title">HTML5 Canvas</a>
-      <!-- <i class="fa fa-info-circle" aria-hidden="true"></i> -->
-    </li>
-    <!-- <li>
-      <a href="#3" data-toggle="tab">Solution</a>
-    </li> -->
-  </ul>
-
-  <div class="tab-content ">
-    <div class="tab-pane active" id="1">
-      <div id="app"></div>
-    </div>
-    <div class="tab-pane" id="2">
-      <div>
-        <button onclick="resetPositions()" class="challenge-btn">Reset</button>
-        <canvas id="canvas" height="500" width="500" />
-        <div style="display: none" }>
-          <img id="emptyLogo" src="/assets/ia-logo-back.png" />
-          <img id="redDot" src="/assets/ia-logo-dot-red.png" />
-          <img id="blackDot" src="/assets/ia-logo-dot-black.png" />
-          <img id="greenDot" src="/assets/ia-logo-dot-green.png" />
-          <img id="blueDot" src="/assets/ia-logo-dot-blue.png" />
+     
+    <div class="container">
+        <div class="challenge-topBar">
+          <img src="/assets/logo-white.png" />
+          <p class="challenge-title">JavaScript Challenge</p>
         </div>
+        <div class="challenge-overview">
+          <p>The InspiringApps logo has lost its dots! </p>
+          <p>Use either of the <strong>ReactDnD</strong> or <strong>HTML5 Canvas</strong> tools below to help restore the dots to the logo!</p>
+        </div>
+    </div>
+
+
+    <div id="exTab2" class="container challenge-container">
+        <ul class="nav nav-tabs">
+            <i id="challenge-info" class="fa fa-info-circle challenge-info" aria-hidden="true"></i>
+            <i id="challenge-help" class="fa fa-question-circle challenge-help" aria-hidden="true"></i>
+            <li class="active">
+              <a href="#1" data-toggle="tab" class="tab-title">React DnD</a>
+            </li>
+            <li>
+              <a href="#2" data-toggle="tab" class="tab-title">HTML5 Canvas</a>
+            </li>
+        </ul>
+
+        <div class="tab-content ">
+          <div class="tab-pane active" id="1">
+            <div id="app"></div>
+          </div>
+          <div class="tab-pane" id="2">
+            <div>
+              <button onclick="resetPositions()" class="challenge-btn">Reset</button>
+              <canvas id="canvas" height="500" width="500" />
+              <div style="display: none" }>
+                <img id="emptyLogo" src="/assets/ia-logo-back.png" />
+                <img id="redDot" src="/assets/ia-logo-dot-red.png" />
+                <img id="blackDot" src="/assets/ia-logo-dot-black.png" />
+                <img id="greenDot" src="/assets/ia-logo-dot-green.png" />
+                <img id="blueDot" src="/assets/ia-logo-dot-blue.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <hr></hr>
+
+    <div class="container"> 
+      <div class="challenge-bottomBar">
+        <h2 class="challenge-footer">Kendrick Gardner</h2>
+        <div class='divider-line'></div>
+        <p class="challenge-footer">Application Author</p>
       </div>
     </div>
-    <!-- <div class="tab-pane" id="3">
-      <h3>add clearfix to tab-content (see the css)</h3>
-    </div> -->
-  </div>
-</div>
-
-<hr></hr>
-<div class="container"> 
-  <div class="challenge-bottomBar">
-    <h2 class="challenge-footer">Kendrick Gardner</h2>
-    <div class='divider-line'></div>
-    <p class="challenge-footer">Application Author</p>
-    
-  </div>
-</div>
 
 
-
-<!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
   <script src="/bundle.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="https://unpkg.com/sweetalert2@7.19.2/dist/sweetalert2.all.js"></script>
-
-  <!-- <div id="app"></div>
-  <div>
-    <button onclick="resetPositions()">Reset</button>
-    <canvas id="canvas" ref="canvas" height="500" width="500" style="border: 1px solid black" />
-    <div style="display: none"}>
-      <img id="emptyLogo" src="/assets/ia-logo-back.png" />
-      <img id="redDot" src="/assets/ia-logo-dot-red.png" />
-      <img id="blackDot" src="/assets/ia-logo-dot-black.png" />
-      <img id="greenDot" src="/assets/ia-logo-dot-green.png" />
-      <img id="blueDot" src="/assets/ia-logo-dot-blue.png" />
-    </div>
-  </div> 
-
-<!-- 
-   <div class="container">
-  <h2>Example tab 2 (using standard nav-tabs)</h2>
-  </div>
-  
-  <div id="exTab2" class="container">
-    <ul class="nav nav-tabs">
-      <li class="active">
-        <a href="#1" data-toggle="tab">Overview</a>
-      </li>
-      <li>
-        <a href="#2" data-toggle="tab">Without clearfix</a>
-      </li>
-      <li>
-        <a href="#3" data-toggle="tab">Solution</a>
-      </li>
-    </ul>
-  
-    <div class="tab-content ">
-      <div class="tab-pane active" id="1">
-        <h3>Standard tab panel created on bootstrap using nav-tabs</h3>
-      </div>
-      <div class="tab-pane" id="2">
-        <h3>Notice the gap between the content and tab after applying a background color</h3>
-      </div>
-      <div class="tab-pane" id="3">
-        <h3>add clearfix to tab-content (see the css)</h3>
-      </div>
-    </div>
-  </div>
-  
-  <hr></hr> -->
-  <script>
-
-    
-    $('#challenge-info').click(() => {
-      console.log('clicked')
-      swal({
-        title: 'About the App',
-        type: 'info',
-        html:
-          '<p>The first tool was built using ReactJS and ' +
-          '<a target="_blank" href="https://react-dnd.github.io/react-dnd/">ReactDnD</a>' +
-          ', a popular drag-and-drop library created by Redux author Dan Abramov</p>' +
-          '<p>The second tool was built using vanilla JavaScript and the native ' +
-          '<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">HTML5 Canvas API</a>.</p>',
-        // focusConfirm: false,
-        confirmButtonText:
-          '<i class="fa fa-thumbs-up"></i> Great!',
-        confirmButtonAriaLabel: 'Thumbs up, great!',
-      })
-    })
-
-        $('#challenge-help').click(() => {
-            console.log('clicked')
-            swal({
-            title: 'Game Play',
-            // type: 'question',
-            html:
-              '<p>Using one of the provided tools, drag and drop each dot onto its appropriate spot in the InspireApps logo</p>.'+ 
-              '<p> When properly placed, the selected dot will snap into place. When impoperly placed, the selected dot will return to its starting position.</p>'+
-              '<p>The task is complete when all the dots have been correctly placed on the logo.</p>'+
-              '<p>Good luck!</p>' ,
-            // focusConfirm: false,
-            confirmButtonText: 'Thanks!',
-            imageUrl: '/assets/ia-logo-complete.png',
-            imageWidth: 200,
-            imageHeight: 200,
-            imageAlt: 'InspiredApps Logo',
-
-              // '<i class="fa fa-thumbs-up"></i> Thanks!',
-            // confirmButtonAriaLabel: 'Thumbs up, great!',
-          })
-          })
-
-    const style = {
-      border: '1px solid black'
-    }
-
-    let currentDots;
-
-    // const emptyLogo = <img src='/assets/ia-logo-back.png' />;
-        // const { canvas, emptyLogo, redDot, blackDot, greenDot, blueDot } = document.querySelectorAll('*[id]');
-        const canvas = document.getElementById('canvas');
-        const emptyLogo = document.getElementById('emptyLogo');
-        const redDot = document.getElementById('redDot');
-        const blackDot = document.getElementById('blackDot');
-        const greenDot = document.getElementById('greenDot');
-        const blueDot = document.getElementById('blueDot');
-        
-        const ctx = canvas.getContext('2d');
-
-        const initialDots = () => ([
-          {
-            x: 75,
-            y: 100,
-            w: 350,
-            h: 350,
-            src: emptyLogo,
-            isDragging: false,
-            notDraggable: true,
-          },
-          {
-            x: 75,
-            y: 25,
-            w: 55,
-            h: 55,
-            src: redDot,
-            type: 'red',
-            isDragging: false,
-            name: 'redDot'
-          },
-          {
-            x: 150,
-            y: 25,
-            w: 55,
-            h: 55,
-            src: blackDot,
-            type: 'black',
-            isDragging: false,
-            name: 'blackDot1'
-          },
-          {
-            x: 220,
-            y: 25,
-            w: 55,
-            h: 55,
-            src: blackDot,
-            type: 'black',
-            isDragging: false,
-            name: 'blackDot2'
-          }, {
-            x: 290,
-            y: 25,
-            w: 55,
-            h: 55,
-            src: greenDot,
-            type: 'green',
-            isDragging: false,
-            name: 'greenDot'
-          }, {
-            x: 365,
-            y: 25,
-            w: 55,
-            h: 55,
-            src: blueDot,
-            type: 'blue',
-            isDragging: false,
-            name: 'blueDot'
-          },
-        ]);
-
-        let dotPositions = initialDots();
-        // this.setState({ dotPositions: initialDots })
-        
-
-        ctx.drawImage(emptyLogo, 75, 100, 350, 350);
-        initialDots().forEach(({ src, x, y, w, h }) => {
-          console.log('newDot!: ', src, x, y, w, h)
-          ctx.drawImage(src, x, y, w, h);
-        })
-
-        const resetPositions = () => {
-          for (let solution in solutionLocations) {
-            solutionLocations[solution].occupied = false;
-          }
-          dotPositions = initialDots();
-          draw();
-        }
-       
-        let canDrag = true;
-        let mouseX;
-        let mouseY;
-        let startX;
-        let startY;
-
-        // console.log('initialdots: ', initialDots);
-        // const dotPositions = this.state.dotPositions;
-        // console.log('canvas: ', this.refs.canvas);
-        // ctx.fillRect(0,0,100,100);
-
-
-        const mouseWithinDot = (mouseX, mouseY, dot) => (
-          mouseX > dot.x && mouseX < dot.x + dot.w && mouseY > dot.y && mouseY < dot.y + dot.h
-        )
-
-        
-
-        const mouseDown = (e) => {
-          console.log('mouse down')
-          e.preventDefault();
-          e.stopPropagation();
-          
-          const canvasBounds = canvas.getBoundingClientRect();
-          const offsetX = canvasBounds.left;
-          const offsetY = canvasBounds.top;
-          console.log('clientX: ', e.clientX)
-          console.log('offsetX: ', offsetX)
-          mouseX = parseInt(e.clientX) - offsetX;
-          mouseY = parseInt(e.clientY) - offsetY;
-          canDrag = false;
-
-          for (let dot of dotPositions) {
-            if (dot.notDraggable){
-              continue;
-            }
-            console.log('checking dot: ', dot)
-            console.log('mouseX, y: ', mouseX, mouseY)
-            if (mouseWithinDot(mouseX, mouseY, dot)) {
-              // $('#canvas').css('cursor', 'pointer');    
-              // console.log('mousewithinDot!: ', dot);
-              canDrag = true;
-              dot.isDragging = true;
-            }
-          }
-
-          startX = mouseX;
-          startY = mouseY;
-
-        }
-        
-        const isDotInCircle = (midPoint, dotX, dotY) => {
-          console.log('isDotInCircleData: ', midPoint, dotX, dotY);
-          // console.log('=============');
-          const distanceSquared = Math.pow((dotX - midPoint.x + 30), 2) + Math.pow((dotY - midPoint.y + 30), 2)
-          // console.log('dSquared: ', distanceSquared)
-          const distance = Math.sqrt(distanceSquared);
-          // console.log('distance: ', distance);
-          if (42.5 > (distance + 27.5)) {
-            console.log('*****match!!!*****')
-            return true;
-          }
-            
-          return false
-        }
-        
-        const returnDotToStart = (dot) => {
-          // console.log('dot in rDTS', dot);
-          const initial = initialDots().find((initial) => initial.name === dot.name );
-          // console.log('initial: ', initial.x, initial.y);
-          dot.x = initial.x;
-          dot.y = initial.y;
-          draw();
-          // console.log('lol')
-        }
-
-  
-        // Solution Location dots 
-        const solutionLocations = {
-          black1: {
-            dotLocation: {
-              x: 100,
-              y: 209
-            },
-            midPoint: {
-              x: 128, 
-              y: 235
-            }, 
-            type: 'black',
-            occupied: false,
-          }, 
-          black2: {
-            dotLocation: {
-              x: 317,
-              y: 265
-            },
-            midPoint: {
-              x: 346,
-              y: 293,
-            }, 
-            type: 'black',
-            occupied: false,
-          },
-          red: {
-            dotLocation: {
-              x: 338,
-              y: 138
-            },
-            midPoint: {
-              x: 366,
-              y: 166,
-            },
-            type: 'red',
-            occupied: false,
-          },
-          blue: {
-            dotLocation: {
-              x: 233,
-              y: 125
-            },
-             midPoint: {
-              x: 260,
-              y: 150,
-            },
-            type: 'blue',
-            occupied: false,
-          },
-          green: {
-            dotLocation: {
-              x: 156,
-              y: 293
-            },
-            midPoint: {
-              x: 183,
-              y: 318,
-            },
-            type: 'green',
-            occupied: false,
-          }
-        }
-
-
-      const handleDotOnTarget = () => {
-        // console.log('solutionLocations: ', solutionLocations)  
-        dotPositions.forEach((dot, i) => { 
-            dot.isDragging = false;
-            for (let solution in solutionLocations) {
-              const target = solutionLocations[solution];
-              if (isDotInCircle(target.midPoint, dot.x, dot.y)){
-                console.log('dotInCircle!');
-                console.log('dot.type: ', dot.type);
-                console.log('target.type: ', target.type);
-                
-              }
-              // console.log('isDotInCircle: ', isDotInCircle(target.midPoint, dot.x, dot.y))
-              if (!target.occupied && dot.type === target.type && isDotInCircle(target.midPoint, dot.x, dot.y)) {
-                console.log('match!: ', dot, target)
-                console.log('dot before: ', dot.x, dot.y)
-                // dot.x = target.dotLocation.x;
-                // dot.y = target.dotLocation.y;
-                dotPositions[i].x = target.dotLocation.x;
-                dotPositions[i].y = target.dotLocation.y;
-                dotPositions[i].notDraggable = true;
-                dotPositions[i].isComplete = true;
-                target.occupied = true;
-                draw();
-                
-                console.log('dot after: ', dot.x, dot.y)
-                setTimeout( checkFinished, 150);
-              } 
-            }
-            !dotPositions[i].isComplete && returnDotToStart(dot);
-        })
-      }
-
-        const solutionCircle = {
-
-        }
-        const checkFinished = () => {
-          const count = Object.keys(solutionLocations).reduce((tv, cv) => {
-            return solutionLocations[cv].occupied ? ++tv : tv;
-          },0);
-          count === 5 && swal("Good Job!", "You have successfully fixed the InspiredApps logo!", "success");
-        }
-
-        const mouseMove = (e) => {
-          console.log('moving!');
-          if (canDrag) {
-            e.preventDefault();
-            e.stopPropagation();
-
-
-            const canvasBounds = canvas.getBoundingClientRect();
-            const offsetX = canvasBounds.left;
-            const offsetY = canvasBounds.top;
-
-            mouseX = parseInt(e.clientX) - offsetX;
-            mouseY = parseInt(e.clientY) - offsetY;
-
-            const dX = mouseX - startX;
-            const dY = mouseY - startY;
-
-            
-            for (let dot of dotPositions) {
-              if (dot.isDragging) {
-                dot.x += dX;
-                dot.y += dY;
-              }
-              // if (mouseWithinDot(mouseX, mouseY, dot)) {
-              //   console.log('withinDot!!!!');
-              //   $('#canvas').css('cursor', 'pointer');    
-              //   // break;
-              // } else {
-              //   $('#canvas').css('cursor', 'default');    
-              // }
-            }
-
-            draw();
-            
-
-            startX = mouseX;
-            startY = mouseY;
-
-          }
-        }
-
-        const clearCanvas = () => {
-          ctx.clearRect(0, 0, canvas.width, canvas.height)
-        }
-
-        const draw = () => {
-          clearCanvas();
-          dotPositions.forEach(({ src, x, y, w, h, isDragging }) => {
-            isDragging && $('#canvas').css('cursor', 'grab');   
-            ctx.drawImage(src, x, y, w, h);
-          })
-          // console.log('redrawn');
-        }
-
-        const mouseUp = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            canDrag = false;
-            console.log('location on up: ', { 'x': mouseX, 'y': mouseY});
-            //  $('#canvas').css('cursor', 'default');
-            // console.log('mouseX: ', mouseY);
-            
-            // console.log('dotPositionsin mU: ', dotPositions);
-            handleDotOnTarget()
-            // console.log('dotPositions: ', dotPositions)
-          }
-
-
-        canvas.onmousedown = mouseDown;
-        canvas.onmouseup = mouseUp
-        canvas.onmousemove = mouseMove
-
-  for (let i in document.links) {
-    document.links[i].onfocus = document.links[i].blur;
-  }
-
-  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/sweetalert2@7.19.2/dist/sweetalert2.all.js"></script>
+  <script src="/general.js"></script>
+  <script src="/initialPositions.js"></script>
+  <script src="/solutionPositions.js"></script>
+  <script src="/canvas.js"></script>
 </body>
 </html>
