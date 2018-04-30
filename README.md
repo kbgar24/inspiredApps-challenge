@@ -10,8 +10,7 @@ After cloning the repository locally, run the following commands in your termina
 
 ```bash
 $ npm install
-$ npm run start             # Spins up server on localhost:3000, using nodemon
-                            # Compiles Webpack, with -p flag
+$ npm start             # Compiles Webpack && spins up server on localhost:3001
 ```
 
 
