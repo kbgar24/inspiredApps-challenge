@@ -323,8 +323,10 @@
 
             for (let dot of dotPositions) {
               if (dot.isDragging) {
-                dot.x += dX;
-                dot.y += dY;
+                this.setState({
+                  dotPositions[dot].x: dot.x + dX,
+                  dotPositions[dot].y: dot.y + dY,
+                })
               }
             }
 
