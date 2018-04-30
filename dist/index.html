@@ -57,7 +57,7 @@
 
 
 <div class="container">
-  <div style="background-color: black">
+  <div class="challenge-topBar">
     <img src="/assets/logo-white.png" />
     <p class="challenge-title">JavaScript Challenge</p>
   </div>
@@ -66,6 +66,7 @@
     <p>Use either of the <strong>ReactDnD</strong> or <strong>HTML5 Canvas</strong> tools below to help restore the dots to the logo!</p>
   </div>
 </div>
+
 
 <div id="exTab2" class="container challenge-container">
   <ul class="nav nav-tabs">
@@ -109,6 +110,14 @@
 </div>
 
 <hr></hr>
+<div class="container"> 
+  <div class="challenge-bottomBar">
+    <h2 class="challenge-footer">Kendrick Gardner</h2>
+    <div class='divider-line'></div>
+    <p class="challenge-footer">Application Author</p>
+    
+  </div>
+</div>
 
 
 
@@ -287,7 +296,7 @@
 
         let dotPositions = initialDots();
         // this.setState({ dotPositions: initialDots })
-
+        
 
         ctx.drawImage(emptyLogo, 75, 100, 350, 350);
         initialDots().forEach(({ src, x, y, w, h }) => {
@@ -342,7 +351,8 @@
             console.log('checking dot: ', dot)
             console.log('mouseX, y: ', mouseX, mouseY)
             if (mouseWithinDot(mouseX, mouseY, dot)) {
-              console.log('mousewithinDot!: ', dot);
+              // $('#canvas').css('cursor', 'pointer');    
+              // console.log('mousewithinDot!: ', dot);
               canDrag = true;
               dot.isDragging = true;
             }
@@ -490,11 +500,11 @@
         const mouseMove = (e) => {
           console.log('moving!');
           if (canDrag) {
-            console.log('canDrag!')
             e.preventDefault();
             e.stopPropagation();
 
-               const canvasBounds = canvas.getBoundingClientRect();
+
+            const canvasBounds = canvas.getBoundingClientRect();
             const offsetX = canvasBounds.left;
             const offsetY = canvasBounds.top;
 
@@ -504,14 +514,23 @@
             const dX = mouseX - startX;
             const dY = mouseY - startY;
 
+            
             for (let dot of dotPositions) {
               if (dot.isDragging) {
                 dot.x += dX;
                 dot.y += dY;
               }
+              // if (mouseWithinDot(mouseX, mouseY, dot)) {
+              //   console.log('withinDot!!!!');
+              //   $('#canvas').css('cursor', 'pointer');    
+              //   // break;
+              // } else {
+              //   $('#canvas').css('cursor', 'default');    
+              // }
             }
 
             draw();
+            
 
             startX = mouseX;
             startY = mouseY;
@@ -525,7 +544,8 @@
 
         const draw = () => {
           clearCanvas();
-          dotPositions.forEach(({ src, x, y, w, h }) => {
+          dotPositions.forEach(({ src, x, y, w, h, isDragging }) => {
+            isDragging && $('#canvas').css('cursor', 'grab');   
             ctx.drawImage(src, x, y, w, h);
           })
           // console.log('redrawn');
@@ -536,6 +556,7 @@
             e.stopPropagation();
             canDrag = false;
             console.log('location on up: ', { 'x': mouseX, 'y': mouseY});
+            //  $('#canvas').css('cursor', 'default');
             // console.log('mouseX: ', mouseY);
             
             // console.log('dotPositionsin mU: ', dotPositions);
@@ -554,5 +575,4 @@
 
   </script>
 </body>
-
 </html>

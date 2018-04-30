@@ -113,21 +113,55 @@ body {
   font-size: 35px;
   text-align: right;
   position: absolute;
-  right: 100px;
+  right: 20px;
+  top: 22px;
 }
 
 .challenge-overview {
   text-align: center;
   font-size: 25px;
-  margin: 20px;
+  margin: 40px 20px;
 }
 
 .challenge-container {
   box-shadow: 0.055rem 0.055rem 1.11rem rgba(20, 20, 20, 0.27);
   width: 600px;
   padding: 20px;
-  margin-top: 50px;
+  margin-top: 20px;
   position: relative;
+}
+
+.challenge-topBar {
+     background-color: #243a51;
+    position: relative;
+    padding: 15px;
+}
+
+.challenge-bottomBar {
+     background-color: #243a51;
+    position: relative;
+        padding: 2px;
+    text-align: center;
+    
+}
+
+.divider-line {
+      width: 300px;
+    height: 2px;
+    background-color: white;
+    margin: 0px auto;
+}
+}
+
+.challenge-footer {
+  color: white;
+
+}
+
+.challenge-footer p {
+    font-size: 20px;
+    font-style: italic;
+    padding-top: 10px;
 }
 
 .challenge-btn {
@@ -176,5 +210,14 @@ body {
 div.swal2-show {
   padding: 2rem;
   font-size: 1.8rem;
-  
+
+}
+
+#canvas {
+  cursor: pointer;
+}
+
+.challenge-footer {
+  background-color: #243a51;
+  color: white;
 }
