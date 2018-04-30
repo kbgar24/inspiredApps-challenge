@@ -12,6 +12,7 @@
   <!-- <div id="app"></div> -->
   <!-- <script src="/bundle.js"></script> -->
   <div>
+    <button onclick="resetPositions()">Reset</button>
     <canvas id="canvas" ref="canvas" height="500" width="500" style="border: 1px solid black" />
     <div style="display: none"}>
       <img id="emptyLogo" src="/assets/ia-logo-back.png" />
@@ -47,7 +48,6 @@
             w: 350,
             h: 350,
             src: emptyLogo,
-            // type: 'blue',
             isDragging: false,
             notDraggable: true,
           },
@@ -101,7 +101,7 @@
           },
         ]);
 
-        const dotPositions = initialDots();
+        let dotPositions = initialDots();
         // this.setState({ dotPositions: initialDots })
 
 
@@ -111,6 +111,13 @@
           ctx.drawImage(src, x, y, w, h);
         })
 
+        const resetPositions = () => {
+          for (let solution in solutionLocations) {
+            solutionLocations[solution].occupied = false;
+          }
+          dotPositions = initialDots();
+          draw();
+        }
         // const { canvas, emptyLogo, redDot, blackDot, greenDot, blueDot } = this.refs;
         // const ctx = this.refs.canvas.getContext('2d');
         const canvasBounds = canvas.getBoundingClientRect();
@@ -176,7 +183,7 @@
           // console.log('dSquared: ', distanceSquared)
           const distance = Math.sqrt(distanceSquared);
           // console.log('distance: ', distance);
-          if (37.5 > (distance + 27.5)) {
+          if (42.5 > (distance + 27.5)) {
             console.log('*****match!!!*****')
             return true;
           }
@@ -286,7 +293,7 @@
                 draw();
                 
                 console.log('dot after: ', dot.x, dot.y)
-                checkFinished();
+                setTimeout( checkFinished, 150);
               } 
             }
             !dotPositions[i].isComplete && returnDotToStart(dot);
@@ -300,7 +307,6 @@
           const count = Object.keys(solutionLocations).reduce((tv, cv) => {
             return solutionLocations[cv].occupied ? ++tv : tv;
           },0);
-          console.log('count: ', count);
           count === 5 && alert('Task successfully complete!');
         }
 
