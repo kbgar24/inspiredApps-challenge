@@ -5,8 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Page Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-    crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="screen" href="/assets/styles/styles.css" />
   <style>
@@ -176,11 +175,11 @@
         type: 'info',
         html:
           '<p>The first tool was built using ReactJS and ' +
-          '<a href="//github.com">ReactDnD</a> ' +
-          'a popular drag-and-drop library created by Redux author Dan Abramov</p>' +
-           '<p>The second tool was built using vanilla JavaScript and the native ' +
-          '<a href="//github.com">HTML5 Canvas</a> </p>',
-        focusConfirm: false,
+          '<a target="_blank" href="https://react-dnd.github.io/react-dnd/">ReactDnD</a>' +
+          ', a popular drag-and-drop library created by Redux author Dan Abramov</p>' +
+          '<p>The second tool was built using vanilla JavaScript and the native ' +
+          '<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">HTML5 Canvas API</a>.</p>',
+        // focusConfirm: false,
         confirmButtonText:
           '<i class="fa fa-thumbs-up"></i> Great!',
         confirmButtonAriaLabel: 'Thumbs up, great!',
@@ -190,19 +189,20 @@
         $('#challenge-help').click(() => {
             console.log('clicked')
             swal({
-              title: 'About the App',
-              type: 'question',
-              html:
-                '<p>The first tool was built using ReactJS and ' +
-                '<a target="_blank" href="https://react-dnd.github.io/react-dnd/">ReactDnD</a> ' +
-                'a popular drag-and-drop library created by Redux author Dan Abramov</p>' +
-                '<p>The second tool was built using vanilla JavaScript and the native ' +
-                '<a target="blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">HTML5 Canvas</a> </p>',
-              // focusConfirm: false,
-              confirmButtonText:
-                '<i class="fa fa-thumbs-up"></i> Great!',
-              confirmButtonAriaLabel: 'Thumbs up, great!',
-            })
+            title: 'Game Play',
+            // type: 'question',
+            html:
+              '<p>Using one of the provided tools, drag and drop each dot onto the appropriate spot on the InspireApps logo. <p> When properly placed, the selected dot will snap into place. When impoperly placed, the selected dot will return to its starting position.</p><p>The task is complete when all the dots have been correctly placed on the logo.<p>Good luck!</p>' ,
+            // focusConfirm: false,
+            confirmButtonText: 'Thanks!',
+            imageUrl: '/assets/ia-logo-complete.png',
+            imageWidth: 200,
+            imageHeight: 200,
+            imageAlt: 'InspiredApps Logo',
+
+              // '<i class="fa fa-thumbs-up"></i> Thanks!',
+            // confirmButtonAriaLabel: 'Thumbs up, great!',
+          })
           })
 
     const style = {
