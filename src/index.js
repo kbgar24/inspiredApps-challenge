@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Container from './container';
 // import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import CanvasSolution from './canvasSolution';
-import CanvasSolution2 from './canvasSolution2';
+// import CanvasSolution2 from './canvasSolution2';
 
 
 

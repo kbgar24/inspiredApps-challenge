@@ -106,3 +106,48 @@ body {
 .react-tabs__tab-panel--selected {
   display: block;
 }
+
+.challenge-title {
+  display: inline-block;
+  color: white;
+  font-size: 35px;
+  text-align: right;
+  position: absolute;
+  right: 100px;
+}
+
+.challenge-overview {
+  text-align: center;
+  font-size: 25px;
+  margin: 20px;
+}
+
+.challenge-container {
+  box-shadow: 0.055rem 0.055rem 1.11rem rgba(20, 20, 20, 0.27);
+  width: 600px;
+  padding: 20px;
+  margin-top: 50px;
+  position: relative;
+}
+
+.challenge-btn {
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #72c7d1;;
+  padding: 15px 25px 15px 25px;
+  text-decoration: none;
+  position: absolute;
+  right: 30px;
+  top: 200px;
+}
+
+.challenge-btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}

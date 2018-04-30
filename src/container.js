@@ -9,7 +9,7 @@ import { resetDots } from './actions';
 const style = {
   width: '500px',
   height: '500px',
-  border: '1px solid black',
+  // border: '1px solid black',
   backgroundColor: 'white',
 };
 
@@ -184,7 +184,7 @@ export default class Container extends Component {
   render() {
     return (
       <div>
-        <button onClick={ this.handleReset }>Reset</button>
+        <button onClick={ this.handleReset } className="challenge-btn">Reset</button>
 
       <div style={style}>
 
