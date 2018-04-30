@@ -134,12 +134,12 @@ body {
   font-family: Arial;
   color: #ffffff;
   font-size: 20px;
-  background: #72c7d1;;
+  background: red;
   padding: 15px 25px 15px 25px;
   text-decoration: none;
   position: absolute;
   right: 30px;
-  top: 200px;
+  top: 280px;
 }
 
 .challenge-btn:hover {
@@ -150,4 +150,25 @@ body {
   background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
+}
+
+.tab-title {
+  font-size: 20px;
+}
+
+.challenge-info {
+     right: 55px;
+    position: absolute;
+    font-size: 20px;
+    top: 25px;
+    cursor: pointer;
+
+}
+
+.challenge-help {
+      right: 20px;
+    position: absolute;
+    font-size: 20px;
+    top: 25px;
+    cursor: pointer;
 }
