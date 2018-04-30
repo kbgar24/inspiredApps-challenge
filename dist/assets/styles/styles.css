@@ -172,3 +172,9 @@ body {
     top: 25px;
     cursor: pointer;
 }
+
+div.swal2-show {
+  padding: 2rem;
+  font-size: 1.8rem;
+  
+}
