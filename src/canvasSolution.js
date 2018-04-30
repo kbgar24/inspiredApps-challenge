@@ -5,67 +5,7 @@ const style = {
   border: '1px solid black'
 }
 
-const initialDots = () => ({
-  emptyLogo: {
-    x: 75,
-    y: 100,
-    w: 350,
-    h: 350,
-    src: emptyLogo,
-    isDragging: false,
-    notDraggable: true,
-  },
-  redDot: {
-    x: 75,
-    y: 25,
-    w: 55,
-    h: 55,
-    src: redDot,
-    type: 'red',
-    isDragging: false,
-    name: 'redDot'
-  },
-  blackDot1: {
-    x: 150,
-    y: 25,
-    w: 55,
-    h: 55,
-    src: blackDot,
-    type: 'black',
-    isDragging: false,
-    name: 'blackDot1'
-  },
-  blackDot2: {
-    x: 220,
-    y: 25,
-    w: 55,
-    h: 55,
-    src: blackDot,
-    type: 'black',
-    isDragging: false,
-    name: 'blackDot2'
-  }, 
-  greenDot: {
-    x: 290,
-    y: 25,
-    w: 55,
-    h: 55,
-    src: greenDot,
-    type: 'green',
-    isDragging: false,
-    name: 'greenDot'
-  }, 
-  blueDot: {
-    x: 365,
-    y: 25,
-    w: 55,
-    h: 55,
-    src: blueDot,
-    type: 'blue',
-    isDragging: false,
-    name: 'blueDot'
-  },
-});
+
 
 let currentDots;
 
@@ -82,10 +22,75 @@ export default class Main extends Component {
   }
 
   componentDidUpdate() {
-    this.draw();
+    // this.draw();
+  }
+
+  generateInitialDots(emptyLogo, redDot, blackDot, greenDot, blueDot) {
+    return ({
+      emptyLogo: {
+        x: 75,
+        y: 100,
+        w: 350,
+        h: 350,
+        src: emptyLogo,
+        isDragging: false,
+        notDraggable: true,
+      },
+      redDot: {
+        x: 75,
+        y: 25,
+        w: 55,
+        h: 55,
+        src: redDot,
+        type: 'red',
+        isDragging: false,
+        name: 'redDot'
+      },
+      blackDot1: {
+        x: 150,
+        y: 25,
+        w: 55,
+        h: 55,
+        src: blackDot,
+        type: 'black',
+        isDragging: false,
+        name: 'blackDot1'
+      },
+      blackDot2: {
+        x: 220,
+        y: 25,
+        w: 55,
+        h: 55,
+        src: blackDot,
+        type: 'black',
+        isDragging: false,
+        name: 'blackDot2'
+      },
+      greenDot: {
+        x: 290,
+        y: 25,
+        w: 55,
+        h: 55,
+        src: greenDot,
+        type: 'green',
+        isDragging: false,
+        name: 'greenDot',
+      },
+      blueDot: {
+        x: 365,
+        y: 25,
+        w: 55,
+        h: 55,
+        src: blueDot,
+        type: 'blue',
+        isDragging: false,
+        name: 'blueDot',
+      },
+    });
   }
 
   createCanvas() {
+    console.log('this.refs: ', this.refs);
     const { canvas, emptyLogo, redDot, blackDot, greenDot, blueDot } = this.refs;
     const ctx = canvas.getContext('2d');
     const canvasBounds = canvas.getBoundingClientRect();
@@ -94,7 +99,7 @@ export default class Main extends Component {
     let canDrag = true;
     let mouseX;
     let mouseY;
-    let dotPositions = initialDots();
+    const dotPositions = this.generateInitialDots(emptyLogo, redDot, blackDot, greenDot, blueDot);
     
     this.setState({
       canvas,
@@ -110,18 +115,23 @@ export default class Main extends Component {
       mouseX,
       mouseY,
       dotPositions,
-    })
+    }, this.drawCanvas)
     
-    this.drawCanvas();
+    // setTimeout(this.drawCanvas, 1000);
   }
   
   drawCanvas() {
-    const { dotPositions, ctx } = this.state;
+    console.log('state: ', this.state);
+    const { dotPositions, canvas } = this.state;
+    const ctx = canvas.getContext('2d');
+    
     this.clearCanvas();
-    for (let dot in dotPositions) {
-      const { src, x, y, w, h } = dot;
+    Object.keys(dotPositions).forEach((dotName) => {
+      console.log('dot: ', dotName);
+      const { src, x, y, w, h } = dotPositions[dotName];
+      console.log('src: ', src);
       ctx.drawImage(src, x, y, w, h);
-    };
+    });
   }
 
   clearCanvas() {
@@ -148,8 +158,8 @@ export default class Main extends Component {
       const dX = currentMouseX - startX;
       const dY = currentMouseY - startY;
 
-      Object.keys(dotPositions).forEach((name) => {
-        const current = dotPositions[name];
+      Object.keys(dotPositions).forEach((dotName) => {
+        const current = dotPositions[dotName];
         const newX = current.x + dX;
         const newY = current.y + dY;
         if (current.isDragging) {
@@ -162,7 +172,7 @@ export default class Main extends Component {
   }
   resetPositions() {
     this.setState({
-      dotPositions: initialDots();
+      dotPositions: initialDots(),
     });
   }
 
@@ -193,3 +203,4 @@ export default class Main extends Component {
       </div>
     </div>
   )
+}
