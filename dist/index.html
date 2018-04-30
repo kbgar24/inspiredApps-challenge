@@ -286,6 +286,7 @@
                 draw();
                 
                 console.log('dot after: ', dot.x, dot.y)
+                checkFinished();
               } 
             }
             !dotPositions[i].isComplete && returnDotToStart(dot);
@@ -294,6 +295,13 @@
 
         const solutionCircle = {
 
+        }
+        const checkFinished = () => {
+          const count = Object.keys(solutionLocations).reduce((tv, cv) => {
+            return solutionLocations[cv].occupied ? ++tv : tv;
+          },0);
+          console.log('count: ', count);
+          count === 5 && alert('Task successfully complete!');
         }
 
         const mouseMove = (e) => {
