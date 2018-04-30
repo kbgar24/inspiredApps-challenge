@@ -7,7 +7,7 @@ module.exports = {
   context: CLIENT_DIR,
   entry: './app',
   output: {
-    path: DIST_DIR,
+    path: path.join(DIST_DIR, "scripts"),
     filename: 'bundle.js'
   },
   module: {

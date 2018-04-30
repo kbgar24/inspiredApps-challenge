@@ -1,80 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>JS Challenge</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" type="image/x-icon" href="/assets/ia-logo-complete.png" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" media="screen" href="/assets/styles/styles.css" />
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS Challenge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/ia-logo-complete.png" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/styles/styles.css" />
+  </head>
 
-<body>
-     
+  <body>
+
     <div class="container">
-        <div class="challenge-topBar">
-          <img src="/assets/logo-white.png" />
-          <p class="challenge-title">JavaScript Challenge</p>
-        </div>
-        <div class="challenge-overview">
-          <p>The InspiringApps logo has lost its dots! </p>
-          <p>Use either of the <strong>ReactDnD</strong> or <strong>HTML5 Canvas</strong> tools below to help restore the dots to the logo!</p>
-        </div>
-    </div>
-
-
-    <div id="exTab2" class="container challenge-container">
-        <ul class="nav nav-tabs">
-            <i id="challenge-info" class="fa fa-info-circle challenge-info" aria-hidden="true"></i>
-            <i id="challenge-help" class="fa fa-question-circle challenge-help" aria-hidden="true"></i>
-            <li class="active">
-              <a href="#1" data-toggle="tab" class="tab-title">React DnD</a>
-            </li>
-            <li>
-              <a href="#2" data-toggle="tab" class="tab-title">HTML5 Canvas</a>
-            </li>
-        </ul>
-
-        <div class="tab-content ">
-          <div class="tab-pane active" id="1">
-            <div id="app"></div>
+          <div class="challenge-topBar">
+            <img src="/assets/logo-white.png" />
+            <p class="challenge-title">JavaScript Challenge</p>
           </div>
-          <div class="tab-pane" id="2">
-            <div>
-              <button onclick="resetPositions()" class="challenge-btn">Reset</button>
-              <canvas id="canvas" height="500" width="500" />
-              <div style="display: none" }>
-                <img id="emptyLogo" src="/assets/ia-logo-back.png" />
-                <img id="redDot" src="/assets/ia-logo-dot-red.png" />
-                <img id="blackDot" src="/assets/ia-logo-dot-black.png" />
-                <img id="greenDot" src="/assets/ia-logo-dot-green.png" />
-                <img id="blueDot" src="/assets/ia-logo-dot-blue.png" />
+          <div class="challenge-overview">
+            <p>The InspiringApps logo has lost its dots! </p>
+            <p>Use either of the <strong>ReactDnD</strong> or <strong>HTML5 Canvas</strong> tools below to help restore the dots to the logo!</p>
+          </div>
+      </div>
+
+
+      <div id="exTab2" class="container challenge-container">
+          <ul class="nav nav-tabs">
+              <i id="challenge-info" class="fa fa-info-circle challenge-info" aria-hidden="true"></i>
+              <i id="challenge-help" class="fa fa-question-circle challenge-help" aria-hidden="true"></i>
+              <li class="active">
+                <a href="#1" data-toggle="tab" class="tab-title">React DnD</a>
+              </li>
+              <li>
+                <a href="#2" data-toggle="tab" class="tab-title">HTML5 Canvas</a>
+              </li>
+          </ul>
+
+          <div class="tab-content ">
+            <div class="tab-pane active" id="1">
+              <div id="app"></div>
+            </div>
+            <div class="tab-pane" id="2">
+              <div>
+                <button onclick="resetPositions()" class="challenge-btn">Reset</button>
+                <canvas id="canvas" height="500" width="500" />
+                <div style="display: none" }>
+                  <img id="emptyLogo" src="/assets/ia-logo-back.png" />
+                  <img id="redDot" src="/assets/ia-logo-dot-red.png" />
+                  <img id="blackDot" src="/assets/ia-logo-dot-black.png" />
+                  <img id="greenDot" src="/assets/ia-logo-dot-green.png" />
+                  <img id="blueDot" src="/assets/ia-logo-dot-blue.png" />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-    </div>
-
-    <hr></hr>
-
-    <div class="container"> 
-      <div class="challenge-bottomBar">
-        <h2 class="challenge-footer">Kendrick Gardner</h2>
-        <div class='divider-line'></div>
-        <p class="challenge-footer">Application Author</p>
       </div>
-    </div>
+
+      <hr></hr>
+
+      <div class="container"> 
+        <div class="challenge-bottomBar">
+          <h2 class="challenge-footer">Kendrick Gardner</h2>
+          <div class='divider-line'></div>
+          <p class="challenge-footer">Application Author</p>
+        </div>
+      </div>
 
 
-  <script src="/bundle.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <script src="https://unpkg.com/sweetalert2@7.19.2/dist/sweetalert2.all.js"></script>
-  <script src="/general.js"></script>
-  <script src="/initialPositions.js"></script>
-  <script src="/solutionPositions.js"></script>
-  <script src="/canvas.js"></script>
-</body>
+    <script src="/scripts/bundle.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert2@7.19.2/dist/sweetalert2.all.js"></script>
+    <script src="/scripts/general.js"></script>
+    <script src="/scripts/initialPositions.js"></script>
+    <script src="/scripts/solutionPositions.js"></script>
+    <script src="/scripts/canvas.js"></script>
+  </body>
 </html>

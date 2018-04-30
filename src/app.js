@@ -1,14 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from './index';
+import Container from './container';
 import { observe } from './actions';
 
-// const App = () => (
-//   <div>
-//     <Main />
-//   </div>
-// );
-
 observe((dotPositions) => {
-  ReactDOM.render(<Main dotPositions={ dotPositions } />, document.getElementById('app'));
+  ReactDOM.render(<Container dotPositions={ dotPositions } />, document.getElementById('app'));
 });

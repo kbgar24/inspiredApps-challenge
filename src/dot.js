@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 
-
 const style = {
   borderRadius: '50%',
   height: '55px',
@@ -22,28 +21,12 @@ const dotSource = {
       type, 
     }
   },
-  // endDrag(props, monitor, component){
-  //   if (!monitor.didDrop()){
-  //     console.log('did not drop!')
-  //     return;
-  //   }
-  //   const item = monitor.getItem();
-  //   const dropResult = monitor.getDropResult();
-
-  //   console.log('dropped!: ', item, dropResult);
-  // }
 }
 
 const collection = (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
   isDragging: monitor.isDragging(),
 });
-
-// @DragSource('dot', dotSource, (connect, monitor) => ({
-//   connectDragSource: connect.dragSource(),
-//   isDragging: monitor.isDragging(),
-//   didDrop: monitor.didDrop()
-// }))
 
 @DragSource(props => props.type, dotSource, collection)
 export default class Dot extends Component {

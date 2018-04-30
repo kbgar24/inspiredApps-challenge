@@ -24,8 +24,6 @@ const startPositions = {
 // Deep Clone; 
 let dotPositions = JSON.parse(JSON.stringify(startPositions));
 
-// let dotPositions = { ...startPositions };
-
 let observer = null;
 
 export function resetDots() {
@@ -42,15 +40,3 @@ export function moveDot(dotName, targetName) {
   dotPositions[dotName].position = targetName;
   observer(dotPositions);
 };
-
-
-
-// export function moveDot(target) {
-//   console.log('moveDot called to: ', target);
-//   dotPosition = target;
-//   observer(dotPositions);
-// }
-
-
-
-// export function getStartPositions() { return startPositions; };

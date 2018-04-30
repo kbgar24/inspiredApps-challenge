@@ -1,5 +1,4 @@
 body {
-  /* background-color: #2e1822; */
   font-family: montserratlight, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 .redStop {
@@ -51,7 +50,6 @@ body {
   position: absolute;
   left: 252px;
 }
-
 
 
 .react-tabs__tab-list {
