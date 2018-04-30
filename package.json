@@ -1,12 +1,10 @@
 {
-  "name": "DiscoverAustin",
+  "name": "InspiredApps-JS-Challenge",
   "version": "1.0.0",
-  "description": "A gamified, geolocation-based, mobile-first web application to help Austinities &amp; Tourists alike discover new spots around town",
+  "description": "Help fix the InspiredApps Logo!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --watch",
-    "start": "nodemon server"
+    "start": "webpack -p && node server"
   },
   "repository": {
     "type": "git",

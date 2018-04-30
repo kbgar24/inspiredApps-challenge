@@ -92,11 +92,11 @@ export default class Container extends Component {
         
         <div style={containerStyle}>
           <div style={dotStartStyle}>
+            {this.renderTarget('blueStart', 'blue')}
             {this.renderTarget('redStart', 'red')}
+            {this.renderTarget('greenStart', 'green')}
             {this.renderTarget('blackStart1', 'black')}
             {this.renderTarget('blackStart2', 'black')}
-            {this.renderTarget('greenStart', 'green')}
-            {this.renderTarget('blueStart', 'blue')}
           </div>
 
           <div style={playAreaStyle}>
