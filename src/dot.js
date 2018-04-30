@@ -15,7 +15,6 @@ const dotSource = {
   beginDrag(props) {
 
     const { name, type } = props;
-    console.log('drag begin!: ', props);
     return {
       name,
       type, 
@@ -38,7 +37,7 @@ export default class Dot extends Component {
     const { connectDragSource, isDragging, type } = this.props;
 
     const connectedDot = connectDragSource(
-      <img src={`/assets/ia-logo-dot-${type}.png`} style={{ ...style }} />
+      <img src={`/assets/img/ia-logo-dot-${type}.png`} style={{ ...style }} />
     );
 
     return isDragging ? null : connectedDot;

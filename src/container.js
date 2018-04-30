@@ -4,7 +4,6 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import swal from 'sweetalert2';
 import Dot from './dot';
 import Target from './target';
-import ItemTypes from './itemTypes';
 import { resetDots } from './actions';
 
 const containerStyle = {
@@ -20,7 +19,7 @@ const dotStartStyle = {
 };
 
 const playAreaStyle = { 
-  backgroundImage: 'url("/assets/ia-logo-back.png")',
+  backgroundImage: 'url("/assets/img/ia-logo-back.png")',
   height: '350px',
   width: '350px',
   backgroundSize: 'cover',
