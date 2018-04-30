@@ -5,6 +5,68 @@ const style = {
   border: '1px solid black'
 }
 
+const solutionLocations = {
+  black1: {
+    dotLocation: {
+      x: 100,
+      y: 209
+    },
+    midPoint: {
+      x: 128,
+      y: 235
+    },
+    type: 'black',
+    occupied: false,
+  },
+  black2: {
+    dotLocation: {
+      x: 317,
+      y: 265
+    },
+    midPoint: {
+      x: 346,
+      y: 293,
+    },
+    type: 'black',
+    occupied: false,
+  },
+  red: {
+    dotLocation: {
+      x: 338,
+      y: 138
+    },
+    midPoint: {
+      x: 366,
+      y: 166,
+    },
+    type: 'red',
+    occupied: false,
+  },
+  blue: {
+    dotLocation: {
+      x: 233,
+      y: 125
+    },
+    midPoint: {
+      x: 260,
+      y: 150,
+    },
+    type: 'blue',
+    occupied: false,
+  },
+  green: {
+    dotLocation: {
+      x: 156,
+      y: 293
+    },
+    midPoint: {
+      x: 183,
+      y: 318,
+    },
+    type: 'green',
+    occupied: false,
+  }
+}
 
 
 let currentDots;
@@ -25,7 +87,8 @@ export default class Main extends Component {
     // this.draw();
   }
 
-  generateInitialDots(emptyLogo, redDot, blackDot, greenDot, blueDot) {
+  generateInitialDots() {
+    const { emptyLogo, redDot, blackDot, greenDot, blueDot } = this.state;
     return ({
       emptyLogo: {
         x: 75,
@@ -90,7 +153,6 @@ export default class Main extends Component {
   }
 
   createCanvas() {
-    console.log('this.refs: ', this.refs);
     const { canvas, emptyLogo, redDot, blackDot, greenDot, blueDot } = this.refs;
     const ctx = canvas.getContext('2d');
     const canvasBounds = canvas.getBoundingClientRect();
@@ -99,8 +161,6 @@ export default class Main extends Component {
     let canDrag = true;
     let mouseX;
     let mouseY;
-    const dotPositions = this.generateInitialDots(emptyLogo, redDot, blackDot, greenDot, blueDot);
-    
     this.setState({
       canvas,
       emptyLogo,
@@ -114,22 +174,69 @@ export default class Main extends Component {
       canDrag,
       mouseX,
       mouseY,
-      dotPositions,
-    }, this.drawCanvas)
+      solutionLocations,
+    }, () => {
+      const dotPositions = this.generateInitialDots(emptyLogo, redDot, blackDot, greenDot, blueDot);
+      this.setState({ dotPositions }, this.drawCanvas)
+    })
     
+    canvas.onmousedown = this.mouseDown;
+    canvas.onmouseup = this.mouseUp;
+    canvas.onmousemove = this.mouseMove;
     // setTimeout(this.drawCanvas, 1000);
   }
+
+  mouseDown = (e) => {
+    const { offsetX, offsetY, canDrag, dotPositions } = this.state;
+    console.log('mouse down')
+    e.preventDefault();
+    e.stopPropagation();
+    const currentMouseX = parseInt(e.clientX) - offsetX;
+    const currentMouseY = parseInt(e.clientY) - offsetY;
+    console.log('currentMouse: ', currentMouseX, currentMouseY);
+    this.setState({ 
+      canDrag: false,
+      mouseX: currentMouseX,
+      mouseY: currentMouseY,
+    });
+
+    Object.keys(dotPositions).forEach((dotName) => {
+      const currentDot = dotPositions[dotName];
+      if (currentDot.notDraggable) {
+        return;
+      }
+      // console.log('checking dot: ', dot)
+      // console.log('mouseX, y: ', mouseX, mouseY)
+      // console.log('dot: ', dot);
+      if (this.mouseWithinDot(currentMouseX, currentMouseY, currentDot)) {
+        console.log('mousewithinDot!: ', currentDot);
+        const newState = update(this.state, {
+          startX: { $set: currentMouseX },
+          startY: { $set: currentMouseY },
+          canDrag: { $set: true },
+          dotPositions: {
+            [dotName]: {
+              isDragging: { $set: true}
+            }
+          }
+        });
+        this.setState({ newState }, this.drawCanvas)
+      }
+    })
+
+  }
+
+  mouseWithinDot = (mouseX, mouseY, dot) => (
+    mouseX > dot.x && mouseX < dot.x + dot.w && mouseY > dot.y && mouseY < dot.y + dot.h
+  )
   
   drawCanvas() {
-    console.log('state: ', this.state);
+    console.log('canvasDrawn!');
     const { dotPositions, canvas } = this.state;
     const ctx = canvas.getContext('2d');
-    
     this.clearCanvas();
     Object.keys(dotPositions).forEach((dotName) => {
-      console.log('dot: ', dotName);
       const { src, x, y, w, h } = dotPositions[dotName];
-      console.log('src: ', src);
       ctx.drawImage(src, x, y, w, h);
     });
   }
@@ -139,15 +246,97 @@ export default class Main extends Component {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 
-  mouseUp(e) {
+  mouseUp = (e) => {
+    console.log('mouseUp')
     e.preventDefault(e);
     e.stopPropagation(e);
     this.setState({ canDrag: false });
-    handleDotOnTarget()
+    this.handleDotOnTarget()
   }
 
-  mouseMove(e) {
+  handleDotOnTarget() {
+    const { dotPositions, solutionLocations } = this.state;
+    Object.keys(dotPositions).forEach((dotName, i) => {
+      const currentDot = dotPositions[dotName];
+      const newState = update(this.state, {
+        dotPositions: {
+          [dotName]: {
+            isDragging: { $set: false }
+          }
+        }
+      })
+      this.setState({ newState });
+      for (let solution in solutionLocations) {
+        const target = solutionLocations[solution];
+        if (this.isDotInCircle(target.midPoint, currentDot.x, currentDot.y)) {
+          console.log('dotInCircle!');
+          console.log('currentDot.type: ', currentDot.type);
+          console.log('target.type: ', target.type);
+
+        }
+        // console.log('isDotInCircle: ', isDotInCircle(target.midPoint, currentDot.x, dot.y))
+        if (!target.occupied && currentDot.type === target.type && this.isDotInCircle(target.midPoint, currentDot.x, currentDot.y)) {
+          console.log('match!: ', currentDot, target)
+          console.log('dot before: ', currentDot.x, currentDot.y)
+          // currentDot.x = target.dotLocation.x;
+          // dot.y = target.dotLocation.y;
+
+          const newState = update(this.state, {
+            dotPositions: {
+              [dotName]: {
+                x: { $set: target.dotLocation.x },
+                y: { $set: target.dotLocation.y },
+                notDraggable: { $set: true },
+                isComplete: { $set: true }
+              }
+            },
+            solutionLocations: {
+              [solution]: {
+                occupied: { $set: true }
+              }
+            }
+          });
+
+          this.setState({ newState }, this.drawCanvas)
+
+          // console.log('dot after: ', dot.x, dot.y)
+          setTimeout(checkFinished, 1000);
+        }
+      }
+      !dotPositions[dotName].isComplete && this.returnDotToStart(dotName);
+    })
+  }
+
+  checkFinished() {
+    const { solutionLocations } = this.state;
+    const count = Object.keys(solutionLocations).reduce((tv, cv) => {
+      return solutionLocations[cv].occupied ? ++tv : tv;
+    }, 0);
+    count === 5 && alert('Task successfully complete!');
+  }
+
+  returnDotToStart(dotName){
+    const initialDots = this.generateInitialDots();
+    console.log('initialDots: ', initialDots);
+    console.log('dotName: ', dotName);
+    console.log('dot: ', initialDots[dotName]);
+    console.log('dot: ', this.generateInitialDots()[dotName])
+    const {x, y} = this.generateInitialDots()[dotName];
+    const newState = update(this.state, {
+      dotPositions: {
+        [dotName]: {
+          x: { $set: x },
+          y: { $set: y }
+        }
+      }
+    });
+    this.setState({ newState }, this.draw);
+  }
+
+  mouseMove = (e) => {
+    console.log('mouseMove')
     const { canDrag, mouseX, mouseY, dotPositions, startX, startY, offsetX, offsetY } = this.state;
+    // console.log('canDrag: ', canDrag)
     if (canDrag) {
       e.preventDefault();
       e.stopPropagation();
@@ -163,20 +352,33 @@ export default class Main extends Component {
         const newX = current.x + dX;
         const newY = current.y + dY;
         if (current.isDragging) {
-          this.updateDotPosition(dotName, newX, newY);
+          this.updateDotPosition(dotName, newX, newY, currentMouseX, currentMouseY);
         }
       });
-
-      this.draw();
     }
   }
+
   resetPositions() {
     this.setState({
-      dotPositions: initialDots(),
+      dotPositions: this.generateInitialDots(),
     });
   }
 
-  updateDotPosition(dotName, newX, newY) {
+  isDotInCircle(midPoint, dotX, dotY) {
+    const distanceSquared = Math.pow((dotX - midPoint.x + 30), 2) + Math.pow((dotY - midPoint.y + 30), 2)
+    // console.log('dSquared: ', distanceSquared)
+    const distance = Math.sqrt(distanceSquared);
+    // console.log('distance: ', distance);
+    if (42.5 > (distance + 27.5)) {
+      console.log('*****match!!!*****')
+      return true;
+    }
+
+    return false
+  }
+
+  updateDotPosition(dotName, newX, newY, currentMouseX, currentMouseY) {
+    console.log('dotPosition updated');
     const newState = update(this.state, {
       dotPositions: {
         [dotName]: {
@@ -187,7 +389,7 @@ export default class Main extends Component {
       startX: { $set: currentMouseX },
       startY: { $set: currentMouseY }
     });
-    this.setState({ newState });
+    this.setState({ newState }, this.drawCanvas);
   }
 
   render = () => (

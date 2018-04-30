@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Container from './container';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+// import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import CanvasSolution from './canvasSolution';
+import CanvasSolution2 from './canvasSolution2';
+
 
 
 export default class Main extends Component {
@@ -11,7 +13,7 @@ export default class Main extends Component {
 
   render = () => (
     <div>
-      <img src="/assets/logo-white.png"/>
+      {/* <img src="/assets/logo-white.png"/>
       <div style={{ color: 'white' }}>
         JS Challenge. The InspiringApps logo has lots its dots! Help restore them!
       </div>
@@ -21,14 +23,14 @@ export default class Main extends Component {
           <Tab> HTML5 Canvas </Tab>
         </TabList>
         <TabPanel>
-          <h1>MainContent</h1>
+          <h1>MainContent</h1> */}
           <Container dotPositions={this.props.dotPositions} style={{ backgroundColor: 'white' }}/>
-        </TabPanel>
+        {/* </TabPanel>
         <TabPanel>
           <h2>Other Content</h2>
-          <CanvasSolution />
+          <CanvasSolution2 />
         </TabPanel>
-      </Tabs>
+      </Tabs> */}
     </div>
   )
 }
