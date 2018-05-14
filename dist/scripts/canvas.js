@@ -111,7 +111,7 @@
             mouseX = parseInt(e.clientX) - offsetX;
             mouseY = parseInt(e.clientY) - offsetY;
 
-            const dX = mouseX - startX;
+            const dX = mouseX - startX;```
             const dY = mouseY - startY;
             
             for (let dot of dotPositions) {

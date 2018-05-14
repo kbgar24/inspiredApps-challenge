@@ -19,9 +19,9 @@
         swal({
           title: 'Game Play',
           html:
-            '<p>Using one of the provided tools, drag and drop each dot onto its appropriate spot in the InspireApps logo</p>.'+ 
+            '<p>Using one of the provided tools, drag and drop each dot onto its appropriate spot in the puzzle</p>.'+ 
             '<p> When properly placed, the selected dot will snap into place. When impoperly placed, the selected dot will return to its starting position.</p>'+
-            '<p>The task is complete when all the dots have been correctly placed on the logo.</p>'+
+            '<p>The task is complete when all the dots have been correctly placed on the puzzle.</p>'+
             '<p>Good luck!</p>' ,
           confirmButtonText: 'Thanks!',
           imageUrl: '/assets/img/ia-logo-complete.png',
